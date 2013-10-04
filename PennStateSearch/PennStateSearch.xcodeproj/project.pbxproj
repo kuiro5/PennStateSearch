@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B04EF9817FC4728006087EB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B04EF9717FC4728006087EB /* UIKit.framework */; };
+		7B04EF9A17FC4728006087EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B04EF9917FC4728006087EB /* Foundation.framework */; };
+		7B04EF9C17FC4728006087EB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B04EF9B17FC4728006087EB /* CoreGraphics.framework */; };
+		7B04EFA217FC4728006087EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B04EFA017FC4728006087EB /* InfoPlist.strings */; };
+		7B04EFA417FC4728006087EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B04EFA317FC4728006087EB /* main.m */; };
+		7B04EFA817FC4728006087EB /* jjkAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B04EFA717FC4728006087EB /* jjkAppDelegate.m */; };
+		7B04EFAA17FC4728006087EB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B04EFA917FC4728006087EB /* Default.png */; };
+		7B04EFAC17FC4728006087EB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B04EFAB17FC4728006087EB /* Default@2x.png */; };
+		7B04EFAE17FC4729006087EB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B04EFAD17FC4729006087EB /* Default-568h@2x.png */; };
+		7B04EFB117FC4729006087EB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B04EFAF17FC4729006087EB /* MainStoryboard.storyboard */; };
+		7B04EFB417FC4729006087EB /* jjkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B04EFB317FC4729006087EB /* jjkViewController.m */; };
+		7B04EFBC17FC48D9006087EB /* jjkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B04EFBB17FC48D9006087EB /* jjkTableViewController.m */; };
+		7B04EFBF17FC48F1006087EB /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B04EFBE17FC48F1006087EB /* Model.m */; };
+		7B04EFDB17FC624B006087EB /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B04EFD417FC624B006087EB /* libcrypto.a */; };
+		7B04EFDC17FC624B006087EB /* liblber.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B04EFD517FC624B006087EB /* liblber.a */; };
+		7B04EFDD17FC624B006087EB /* libldap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B04EFD617FC624B006087EB /* libldap.a */; };
+		7B04EFDE17FC624B006087EB /* libsasl2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B04EFD717FC624B006087EB /* libsasl2.a */; };
+		7B04EFDF17FC624B006087EB /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B04EFD817FC624B006087EB /* libssl.a */; };
+		7B04EFE017FC624B006087EB /* RHLDAPSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B04EFDA17FC624B006087EB /* RHLDAPSearch.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7B04EF9317FC4728006087EB /* PennStateSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PennStateSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B04EF9717FC4728006087EB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7B04EF9917FC4728006087EB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7B04EF9B17FC4728006087EB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7B04EF9F17FC4728006087EB /* PennStateSearch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PennStateSearch-Info.plist"; sourceTree = "<group>"; };
+		7B04EFA117FC4728006087EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7B04EFA317FC4728006087EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7B04EFA517FC4728006087EB /* PennStateSearch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PennStateSearch-Prefix.pch"; sourceTree = "<group>"; };
+		7B04EFA617FC4728006087EB /* jjkAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jjkAppDelegate.h; sourceTree = "<group>"; };
+		7B04EFA717FC4728006087EB /* jjkAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jjkAppDelegate.m; sourceTree = "<group>"; };
+		7B04EFA917FC4728006087EB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		7B04EFAB17FC4728006087EB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		7B04EFAD17FC4729006087EB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7B04EFB017FC4729006087EB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		7B04EFB217FC4729006087EB /* jjkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jjkViewController.h; sourceTree = "<group>"; };
+		7B04EFB317FC4729006087EB /* jjkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jjkViewController.m; sourceTree = "<group>"; };
+		7B04EFBA17FC48D9006087EB /* jjkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjkTableViewController.h; sourceTree = "<group>"; };
+		7B04EFBB17FC48D9006087EB /* jjkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jjkTableViewController.m; sourceTree = "<group>"; };
+		7B04EFBD17FC48F1006087EB /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		7B04EFBE17FC48F1006087EB /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		7B04EFCC17FC624B006087EB /* lber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lber.h; sourceTree = "<group>"; };
+		7B04EFCD17FC624B006087EB /* lber_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lber_types.h; sourceTree = "<group>"; };
+		7B04EFCE17FC624B006087EB /* ldap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldap.h; sourceTree = "<group>"; };
+		7B04EFCF17FC624B006087EB /* ldap_cdefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldap_cdefs.h; sourceTree = "<group>"; };
+		7B04EFD017FC624B006087EB /* ldap_features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldap_features.h; sourceTree = "<group>"; };
+		7B04EFD117FC624B006087EB /* ldap_schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldap_schema.h; sourceTree = "<group>"; };
+		7B04EFD217FC624B006087EB /* ldap_utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldap_utf8.h; sourceTree = "<group>"; };
+		7B04EFD417FC624B006087EB /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		7B04EFD517FC624B006087EB /* liblber.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblber.a; sourceTree = "<group>"; };
+		7B04EFD617FC624B006087EB /* libldap.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libldap.a; sourceTree = "<group>"; };
+		7B04EFD717FC624B006087EB /* libsasl2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsasl2.a; sourceTree = "<group>"; };
+		7B04EFD817FC624B006087EB /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		7B04EFD917FC624B006087EB /* RHLDAPSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHLDAPSearch.h; sourceTree = "<group>"; };
+		7B04EFDA17FC624B006087EB /* RHLDAPSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHLDAPSearch.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7B04EF9017FC4728006087EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B04EF9817FC4728006087EB /* UIKit.framework in Frameworks */,
+				7B04EF9A17FC4728006087EB /* Foundation.framework in Frameworks */,
+				7B04EF9C17FC4728006087EB /* CoreGraphics.framework in Frameworks */,
+				7B04EFDB17FC624B006087EB /* libcrypto.a in Frameworks */,
+				7B04EFDC17FC624B006087EB /* liblber.a in Frameworks */,
+				7B04EFDD17FC624B006087EB /* libldap.a in Frameworks */,
+				7B04EFDE17FC624B006087EB /* libsasl2.a in Frameworks */,
+				7B04EFDF17FC624B006087EB /* libssl.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7B04EF8817FC4728006087EB = {
+			isa = PBXGroup;
+			children = (
+				7B04EF9D17FC4728006087EB /* PennStateSearch */,
+				7B04EF9617FC4728006087EB /* Frameworks */,
+				7B04EF9417FC4728006087EB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7B04EF9417FC4728006087EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B04EF9317FC4728006087EB /* PennStateSearch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7B04EF9617FC4728006087EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B04EF9717FC4728006087EB /* UIKit.framework */,
+				7B04EF9917FC4728006087EB /* Foundation.framework */,
+				7B04EF9B17FC4728006087EB /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B04EF9D17FC4728006087EB /* PennStateSearch */ = {
+			isa = PBXGroup;
+			children = (
+				7B04EFA617FC4728006087EB /* jjkAppDelegate.h */,
+				7B04EFBA17FC48D9006087EB /* jjkTableViewController.h */,
+				7B04EFBB17FC48D9006087EB /* jjkTableViewController.m */,
+				7B04EFBD17FC48F1006087EB /* Model.h */,
+				7B04EFBE17FC48F1006087EB /* Model.m */,
+				7B04EFA717FC4728006087EB /* jjkAppDelegate.m */,
+				7B04EFAF17FC4729006087EB /* MainStoryboard.storyboard */,
+				7B04EFB217FC4729006087EB /* jjkViewController.h */,
+				7B04EFB317FC4729006087EB /* jjkViewController.m */,
+				7B04EF9E17FC4728006087EB /* Supporting Files */,
+			);
+			path = PennStateSearch;
+			sourceTree = "<group>";
+		};
+		7B04EF9E17FC4728006087EB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B04EF9F17FC4728006087EB /* PennStateSearch-Info.plist */,
+				7B04EFCA17FC624B006087EB /* ldap */,
+				7B04EFA017FC4728006087EB /* InfoPlist.strings */,
+				7B04EFA317FC4728006087EB /* main.m */,
+				7B04EFA517FC4728006087EB /* PennStateSearch-Prefix.pch */,
+				7B04EFA917FC4728006087EB /* Default.png */,
+				7B04EFAB17FC4728006087EB /* Default@2x.png */,
+				7B04EFAD17FC4729006087EB /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7B04EFCA17FC624B006087EB /* ldap */ = {
+			isa = PBXGroup;
+			children = (
+				7B04EFCB17FC624B006087EB /* include */,
+				7B04EFD317FC624B006087EB /* lib */,
+				7B04EFD917FC624B006087EB /* RHLDAPSearch.h */,
+				7B04EFDA17FC624B006087EB /* RHLDAPSearch.m */,
+			);
+			path = ldap;
+			sourceTree = "<group>";
+		};
+		7B04EFCB17FC624B006087EB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7B04EFCC17FC624B006087EB /* lber.h */,
+				7B04EFCD17FC624B006087EB /* lber_types.h */,
+				7B04EFCE17FC624B006087EB /* ldap.h */,
+				7B04EFCF17FC624B006087EB /* ldap_cdefs.h */,
+				7B04EFD017FC624B006087EB /* ldap_features.h */,
+				7B04EFD117FC624B006087EB /* ldap_schema.h */,
+				7B04EFD217FC624B006087EB /* ldap_utf8.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		7B04EFD317FC624B006087EB /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				7B04EFD417FC624B006087EB /* libcrypto.a */,
+				7B04EFD517FC624B006087EB /* liblber.a */,
+				7B04EFD617FC624B006087EB /* libldap.a */,
+				7B04EFD717FC624B006087EB /* libsasl2.a */,
+				7B04EFD817FC624B006087EB /* libssl.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7B04EF9217FC4728006087EB /* PennStateSearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B04EFB717FC4729006087EB /* Build configuration list for PBXNativeTarget "PennStateSearch" */;
+			buildPhases = (
+				7B04EF8F17FC4728006087EB /* Sources */,
+				7B04EF9017FC4728006087EB /* Frameworks */,
+				7B04EF9117FC4728006087EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PennStateSearch;
+			productName = PennStateSearch;
+			productReference = 7B04EF9317FC4728006087EB /* PennStateSearch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7B04EF8A17FC4728006087EB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = jjk;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Joshua Kuiros";
+			};
+			buildConfigurationList = 7B04EF8D17FC4728006087EB /* Build configuration list for PBXProject "PennStateSearch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7B04EF8817FC4728006087EB;
+			productRefGroup = 7B04EF9417FC4728006087EB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B04EF9217FC4728006087EB /* PennStateSearch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7B04EF9117FC4728006087EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B04EFA217FC4728006087EB /* InfoPlist.strings in Resources */,
+				7B04EFAA17FC4728006087EB /* Default.png in Resources */,
+				7B04EFAC17FC4728006087EB /* Default@2x.png in Resources */,
+				7B04EFAE17FC4729006087EB /* Default-568h@2x.png in Resources */,
+				7B04EFB117FC4729006087EB /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7B04EF8F17FC4728006087EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B04EFA417FC4728006087EB /* main.m in Sources */,
+				7B04EFA817FC4728006087EB /* jjkAppDelegate.m in Sources */,
+				7B04EFB417FC4729006087EB /* jjkViewController.m in Sources */,
+				7B04EFBC17FC48D9006087EB /* jjkTableViewController.m in Sources */,
+				7B04EFBF17FC48F1006087EB /* Model.m in Sources */,
+				7B04EFE017FC624B006087EB /* RHLDAPSearch.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7B04EFA017FC4728006087EB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B04EFA117FC4728006087EB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7B04EFAF17FC4729006087EB /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B04EFB017FC4729006087EB /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7B04EFB517FC4729006087EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7B04EFB617FC4729006087EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B04EFB817FC4729006087EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PennStateSearch/PennStateSearch-Prefix.pch";
+				INFOPLIST_FILE = "PennStateSearch/PennStateSearch-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/PennStateSearch/ldap/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = PennStateSearch/ldap/include;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7B04EFB917FC4729006087EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PennStateSearch/PennStateSearch-Prefix.pch";
+				INFOPLIST_FILE = "PennStateSearch/PennStateSearch-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/PennStateSearch/ldap/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = PennStateSearch/ldap/include;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7B04EF8D17FC4728006087EB /* Build configuration list for PBXProject "PennStateSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B04EFB517FC4729006087EB /* Debug */,
+				7B04EFB617FC4729006087EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B04EFB717FC4729006087EB /* Build configuration list for PBXNativeTarget "PennStateSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B04EFB817FC4729006087EB /* Debug */,
+				7B04EFB917FC4729006087EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7B04EF8A17FC4728006087EB /* Project object */;
+}
