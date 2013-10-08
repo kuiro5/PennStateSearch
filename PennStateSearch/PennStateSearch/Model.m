@@ -12,6 +12,9 @@
 
 @property(strong,nonatomic)RHLDAPSearch *psuSearch;
 @property(strong, nonatomic) NSArray *results;
+@property(strong, nonatomic)NSMutableArray *buildingsInformation;
+@property(strong, nonatomic)NSArray *sortedBuildingsArray;
+
 
 @end
 
@@ -108,6 +111,59 @@
     return entryName;
 }
 
+-(NSInteger)numberOfBuildings
+{
+    return [self.buildingsInformation count];
+}
+
+-(NSMutableArray*)buildingsArray
+{
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *buildingsFile = [bundle pathForResource:@"buildings" ofType:@".plist"];
+    self.buildingsInformation = [[NSMutableArray alloc] initWithContentsOfFile:buildingsFile];
+    
+    return self.buildingsInformation;
+}
+
+-(NSArray*)sortArray:(NSMutableArray*)buildingsArray
+{
+    NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    
+    NSArray * descriptors = [NSArray arrayWithObjects:nameDescriptor, nil];
+    NSArray * sortedArray = [buildingsArray sortedArrayUsingDescriptors:descriptors];
+    
+    return sortedArray;
+}
+
+-(void)displayBuildings
+{
+    NSMutableArray *buildingsArray = [self buildingsArray];
+    
+    
+    
+     self.sortedBuildingsArray = [self sortArray:buildingsArray];
+    
+    
+}
+
+
+-(NSString*)buildingNameAtIndex:(NSInteger)index
+{
+    NSDictionary *buildingDictionary = [self.sortedBuildingsArray objectAtIndex:index];
+    NSString *buildingName = [buildingDictionary objectForKey:@"name"];
+    
+    return buildingName;
+}
+
+-(NSString*)buildingOppCodeAtIndex:(NSInteger)index
+{
+    NSDictionary *buildingDictionary = [self.sortedBuildingsArray objectAtIndex:index];
+    NSNumber *buildingCode = [buildingDictionary objectForKey:@"opp_bldg_code"];
+    NSString *buildingCodeString = [NSString stringWithFormat:@"%@", buildingCode];
+
+    
+    return buildingCodeString;
+}
 
 
 

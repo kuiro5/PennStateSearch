@@ -9,7 +9,7 @@
 #import "jjkTableViewController.h"
 #import "Model.h"
 
-@interface jjkViewController () <TableDelegate> 
+@interface jjkViewController ()
 -(IBAction)unwindSegue:(UIStoryboardSegue*)segue;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong,nonatomic) Model *model;
@@ -48,22 +48,12 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)dismissMe
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    
-    self.firstNameTextField.text = @"";             // reset text fields
-    self.lastNameTextField.text = @"";
-    self.psuIdTextField.text = @"";
-    
-}
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"searchSegue"])
     {
         jjkTableViewController *tableViewController = segue.destinationViewController;
-        tableViewController.delegate = self;
+       // tableViewController.delegate = self;
         tableViewController.model = self.model;
     }
     

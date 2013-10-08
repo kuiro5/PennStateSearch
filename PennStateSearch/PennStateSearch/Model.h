@@ -28,6 +28,15 @@
 -(NSString *)nameAtIndex:(NSInteger)index;
 -(NSString*)addressAtIndex:(NSInteger)index;
 
+-(NSMutableArray*)buildingsArray;
+-(NSInteger)numberOfBuildings;
+
+-(void)displayBuildings;
+-(NSArray*)sortArray:(NSMutableArray*)buildingsArray;
+
+-(NSString*)buildingOppCodeAtIndex:(NSInteger)index;
+-(NSString*)buildingNameAtIndex:(NSInteger)index;
+
 @end
 
 

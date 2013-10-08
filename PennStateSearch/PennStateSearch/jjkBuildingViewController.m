@@ -1,18 +1,19 @@
 //
-// Name:    Joshua Kuiros
-// Section: CMPSC 475
-// Program: Assignment 5
-// Date: October 4, 2013
+//  jjkBuildingViewController.m
+//  PennStateSearch
+//
+//  Created by Joshua Kuiros on 10/7/13.
+//  Copyright (c) 2013 Joshua Kuiros. All rights reserved.
 //
 
-#import "jjkTableViewController.h"
-
+#import "jjkBuildingViewController.h"
 #define numberOfSections 1
 
-@interface jjkTableViewController ()
+@interface jjkBuildingViewController ()
+
 @end
 
-@implementation jjkTableViewController
+@implementation jjkBuildingViewController
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -21,6 +22,9 @@
     }
     return self;
 }
+
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +39,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    
+    [self.model displayBuildings];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +49,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
@@ -51,12 +59,12 @@
 
 -(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.model numberOfResults];
+    return [self.model numberOfBuildings];
 }
 
--(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath          
+-(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"BuildingCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if(cell == nil){
@@ -64,11 +72,19 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
-    cell.textLabel.text = [self.model nameAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [self.model addressAtIndex:indexPath.row];
+    cell.textLabel.text = [self.model buildingNameAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [self.model buildingOppCodeAtIndex:indexPath.row];
     
     
     return cell;
     
 }
+
+
+
+
+
+
+
+
 @end
