@@ -39,7 +39,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.scrollView.contentSize = CGSizeMake(320, 560);
+    if(self)
+    {
+        self.firstNameTextField.text = @"";
+        self.lastNameTextField.text = @"";
+        self.psuIdTextField.text = @"";
+        [[[self tabBarController] navigationItem] setTitle:@"PSU Search Directory"];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning

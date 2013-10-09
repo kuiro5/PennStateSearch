@@ -44,6 +44,16 @@
     [self.model displayBuildings];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if(self)
+    {
+        [[[self tabBarController] navigationItem] setTitle:@"PSU Buildling Directory"];
+        
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
