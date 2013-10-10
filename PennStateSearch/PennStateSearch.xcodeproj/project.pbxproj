@@ -59,6 +59,8 @@
 		7B8CFAE4180377E5004365AB /* smeal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B8CFAC4180377E5004365AB /* smeal.jpg */; };
 		7B8CFAE5180377E5004365AB /* buildings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B8CFAC5180377E5004365AB /* buildings.plist */; };
 		7B8CFAF3180383D5004365AB /* jjkBuildingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CFAF2180383D5004365AB /* jjkBuildingViewController.m */; };
+		7BA2A42B18061B00004B938A /* jjkDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2A42A18061B00004B938A /* jjkDetailedInfoViewController.m */; };
+		7BA2A44218063E6A004B938A /* jjkBuildingPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2A44118063E6A004B938A /* jjkBuildingPhotoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +132,10 @@
 		7B8CFAC5180377E5004365AB /* buildings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buildings.plist; sourceTree = "<group>"; };
 		7B8CFAF1180383D5004365AB /* jjkBuildingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjkBuildingViewController.h; sourceTree = "<group>"; };
 		7B8CFAF2180383D5004365AB /* jjkBuildingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jjkBuildingViewController.m; sourceTree = "<group>"; };
+		7BA2A42918061B00004B938A /* jjkDetailedInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jjkDetailedInfoViewController.h; path = ../jjkDetailedInfoViewController.h; sourceTree = "<group>"; };
+		7BA2A42A18061B00004B938A /* jjkDetailedInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jjkDetailedInfoViewController.m; path = ../jjkDetailedInfoViewController.m; sourceTree = "<group>"; };
+		7BA2A44018063E6A004B938A /* jjkBuildingPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjkBuildingPhotoViewController.h; sourceTree = "<group>"; };
+		7BA2A44118063E6A004B938A /* jjkBuildingPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jjkBuildingPhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +187,10 @@
 		7B04EF9D17FC4728006087EB /* PennStateSearch */ = {
 			isa = PBXGroup;
 			children = (
+				7BA2A44018063E6A004B938A /* jjkBuildingPhotoViewController.h */,
+				7BA2A44118063E6A004B938A /* jjkBuildingPhotoViewController.m */,
+				7BA2A42918061B00004B938A /* jjkDetailedInfoViewController.h */,
+				7BA2A42A18061B00004B938A /* jjkDetailedInfoViewController.m */,
 				7B04EFA617FC4728006087EB /* jjkAppDelegate.h */,
 				7B04EFBA17FC48D9006087EB /* jjkTableViewController.h */,
 				7B04EFBB17FC48D9006087EB /* jjkTableViewController.m */,
@@ -403,6 +413,8 @@
 				7B04EFBF17FC48F1006087EB /* Model.m in Sources */,
 				7B04EFE017FC624B006087EB /* RHLDAPSearch.m in Sources */,
 				7B8CFAF3180383D5004365AB /* jjkBuildingViewController.m in Sources */,
+				7BA2A42B18061B00004B938A /* jjkDetailedInfoViewController.m in Sources */,
+				7BA2A44218063E6A004B938A /* jjkBuildingPhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

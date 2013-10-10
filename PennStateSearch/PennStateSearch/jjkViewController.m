@@ -34,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.model clearResults];
 }
 
 - (void)viewDidAppear:(BOOL)animated

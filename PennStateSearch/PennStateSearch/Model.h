@@ -37,6 +37,16 @@
 -(NSString*)buildingOppCodeAtIndex:(NSInteger)index;
 -(NSString*)buildingNameAtIndex:(NSInteger)index;
 
+-(NSString*)affiliationAtIndex:(NSInteger)index;
+-(NSString*)emailAtIndex:(NSInteger)index;
+-(NSString*)mobileAtIndex:(NSInteger)index;
+-(NSString*)campusAtIndex:(NSInteger)index;
+-(NSString*)majorAtIndex:(NSInteger)index;
+
+-(NSString*)buildingPictureAtIndex:(NSInteger)index;
+
+-(void)clearResults;
+
 @end
 
 

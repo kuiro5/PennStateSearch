@@ -7,15 +7,20 @@
 //
 
 #import "jjkBuildingViewController.h"
+#import "jjkBuildingPhotoViewController.h"
 #define numberOfSections 1
 
-@interface jjkBuildingViewController ()
+@interface jjkBuildingViewController () <BuildingDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *buildingTableView;
+
+@property(strong,nonatomic)NSString *pictureName;
 
 @end
+ 
+@implementation jjkBuildingViewController 
 
-@implementation jjkBuildingViewController
-
--(id)initWithCoder:(NSCoder *)aDecoder {
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
     self = [super initWithCoder:aDecoder];
     if (self) {
         _model = [[Model alloc] init];
@@ -39,6 +44,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.pictureName = @"";
     
     
     [self.model displayBuildings];
@@ -82,11 +89,45 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
+    
     cell.textLabel.text = [self.model buildingNameAtIndex:indexPath.row];
     cell.detailTextLabel.text = [self.model buildingOppCodeAtIndex:indexPath.row];
+    self.pictureName = [self.model buildingPictureAtIndex:indexPath.row];
+    
+   
+    
+    if([self.pictureName length] == 0)
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.userInteractionEnabled = NO;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.userInteractionEnabled = YES;
+    }
     
     
     return cell;
+    
+}
+
+- (NSIndexPath *)buildingRowSelected
+{
+    NSIndexPath *indexPath = [self.buildingTableView indexPathForSelectedRow];
+    
+    NSLog(@"clicked %d", indexPath.row);
+    
+    return indexPath;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"BuildingSegue"])
+    {
+        jjkBuildingPhotoViewController *buildingInfoViewController = segue.destinationViewController;
+        buildingInfoViewController.model = self.model;
+        buildingInfoViewController.delegate = self;
+    }
     
 }
 

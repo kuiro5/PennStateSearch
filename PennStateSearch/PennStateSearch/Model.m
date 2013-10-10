@@ -46,6 +46,13 @@
     return self.psuId;
 }
 
+-(void)clearResults
+{
+    self.firstName = @"";
+    self.lastName = @"";
+    self.psuId = @"";
+}
+
 -(void)firstNameChanged:(UITextField*)textField
 {
     self.firstName = textField.text;
@@ -82,6 +89,8 @@
     
     query = [query stringByAppendingString:@")"];
     self.results =   [self.psuSearch searchWithQuery:query withinBase:@"dc=psu,dc=edu" usingScope:RH_LDAP_SCOPE_SUBTREE error:&errorObject];
+
+
 }
 
 -(NSInteger)numberOfResults
@@ -109,6 +118,46 @@
     NSString *entryName = [entryDictionary objectForKey:@"cn"][0];
     
     return entryName;
+}
+
+-(NSString*)affiliationAtIndex:(NSInteger)index
+{
+    NSDictionary *entryDictionary = [self.results objectAtIndex:index];
+    NSString *affiliation = [entryDictionary objectForKey:@"eduPersonPrimaryAffiliation"][0];
+    
+    return affiliation;
+}
+
+-(NSString*)emailAtIndex:(NSInteger)index
+{
+    NSDictionary *entryDictionary = [self.results objectAtIndex:index];
+    NSString *email = [entryDictionary objectForKey:@"mail"][0];
+    
+    return email;
+}
+
+-(NSString*)mobileAtIndex:(NSInteger)index
+{
+    NSDictionary *entryDictionary = [self.results objectAtIndex:index];
+    NSString *mobile = [entryDictionary objectForKey:@"mobile"][0];
+    
+    return mobile;
+}
+
+-(NSString*)campusAtIndex:(NSInteger)index
+{
+    NSDictionary *entryDictionary = [self.results objectAtIndex:index];
+    NSString *campus = [entryDictionary objectForKey:@"psCampus"][0];
+    
+    return campus;
+}
+
+-(NSString*)majorAtIndex:(NSInteger)index
+{
+    NSDictionary *entryDictionary = [self.results objectAtIndex:index];
+    NSString *major = [entryDictionary objectForKey:@"psCurriculum"][0];
+    
+    return major;
 }
 
 -(NSInteger)numberOfBuildings
@@ -153,6 +202,14 @@
     NSString *buildingName = [buildingDictionary objectForKey:@"name"];
     
     return buildingName;
+}
+
+-(NSString*)buildingPictureAtIndex:(NSInteger)index
+{
+    NSDictionary *buildingDictionary = [self.sortedBuildingsArray objectAtIndex:index];
+    NSString *photoName = [buildingDictionary objectForKey:@"photo"];
+    
+    return photoName;
 }
 
 -(NSString*)buildingOppCodeAtIndex:(NSInteger)index

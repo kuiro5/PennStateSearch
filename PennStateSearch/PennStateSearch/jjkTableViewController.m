@@ -6,10 +6,12 @@
 //
 
 #import "jjkTableViewController.h"
+#import "jjkDetailedInfoViewController.h"
 
 #define numberOfSections 1
 
-@interface jjkTableViewController ()
+@interface jjkTableViewController () <InfoDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
 @end
 
 @implementation jjkTableViewController
@@ -21,6 +23,8 @@
     }
     return self;
 }
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +39,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -64,6 +70,15 @@
     return [self.model numberOfResults];
 }
 
+- (NSIndexPath *)selectedRow
+{
+    NSIndexPath *indexPath = [self.resultsTableView indexPathForSelectedRow];
+    
+    NSLog(@"clicked %d", indexPath.row);
+    
+    return indexPath;
+}
+
 -(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath          
 {
     static NSString *CellIdentifier = @"Cell";
@@ -81,4 +96,15 @@
     return cell;
     
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"InfoSegue"])
+    {
+        jjkDetailedInfoViewController *detailedInfoViewControler = segue.destinationViewController;
+        detailedInfoViewControler.model = self.model;
+    }
+    
+}
+
+
 @end
