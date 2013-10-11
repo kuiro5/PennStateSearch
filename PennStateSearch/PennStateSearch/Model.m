@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 5
-// Date: October 4, 2013
+// Program: Assignment 6
+// Date: October 10, 2013
 //
 
 #import "Model.h"
@@ -14,7 +14,6 @@
 @property(strong, nonatomic) NSArray *results;
 @property(strong, nonatomic)NSMutableArray *buildingsInformation;
 @property(strong, nonatomic)NSArray *sortedBuildingsArray;
-
 
 @end
 
@@ -76,7 +75,7 @@
     // create query string with non blank text fields
     if(self.firstName.length > 0)
     {
-        query = [query stringByAppendingString:[NSString stringWithFormat:@"(givenName=%@)", self.firstName]];
+        query = [query stringByAppendingString:[NSString stringWithFormat:@"(givenName=%@*)", self.firstName]];
     }
     if(self.lastName.length > 0)
     {
@@ -89,8 +88,6 @@
     
     query = [query stringByAppendingString:@")"];
     self.results =   [self.psuSearch searchWithQuery:query withinBase:@"dc=psu,dc=edu" usingScope:RH_LDAP_SCOPE_SUBTREE error:&errorObject];
-
-
 }
 
 -(NSInteger)numberOfResults
@@ -187,12 +184,8 @@
 -(void)displayBuildings
 {
     NSMutableArray *buildingsArray = [self buildingsArray];
-    
-    
-    
+
      self.sortedBuildingsArray = [self sortArray:buildingsArray];
-    
-    
 }
 
 

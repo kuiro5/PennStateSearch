@@ -1,24 +1,25 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 5
-// Date: October 4, 2013
+// Program: Assignment 6
+// Date: October 10, 2013
 //
 
 #import "jjkViewController.h"
 #import "jjkTableViewController.h"
 #import "Model.h"
 
+#define keyboardHeight 216.0
+
 @interface jjkViewController ()
 -(IBAction)unwindSegue:(UIStoryboardSegue*)segue;
+- (IBAction)searchButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong,nonatomic) Model *model;
-- (IBAction)searchButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *psuIdTextField;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
-
 @end
 
 @implementation jjkViewController
@@ -34,8 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.model clearResults];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -46,7 +45,8 @@
         self.firstNameTextField.text = @"";
         self.lastNameTextField.text = @"";
         self.psuIdTextField.text = @"";
-        [[[self tabBarController] navigationItem] setTitle:@"PSU Search Directory"];
+        [[[self tabBarController] navigationItem] setTitle:@"PSU People"];
+        [self.model clearResults];
         
     }
 }
@@ -62,7 +62,7 @@
     if ([segue.identifier isEqualToString:@"searchSegue"])
     {
         jjkTableViewController *tableViewController = segue.destinationViewController;
-       // tableViewController.delegate = self;
+        //tableViewController.delegate = self;
         tableViewController.model = self.model;
     }
     
@@ -114,7 +114,7 @@
 -(void)textFieldDidBeginEditing:(UITextField*)textField{
     
     NSInteger textFieldTag = textField.tag;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0,  0.0, 216.0,  0.0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0,  0.0, keyboardHeight,  0.0);
     self.scrollView.contentInset = contentInsets;
     
     

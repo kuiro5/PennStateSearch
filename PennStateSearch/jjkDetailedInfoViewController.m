@@ -1,9 +1,8 @@
 //
-//  jjkDetailedInfoViewController.m
-//  PennStateSearch
-//
-//  Created by Joshua Kuiros on 10/9/13.
-//  Copyright (c) 2013 Joshua Kuiros. All rights reserved.
+// Name:    Joshua Kuiros
+// Section: CMPSC 475
+// Program: Assignment 6
+// Date: October 10, 2013
 //
 
 #import "jjkDetailedInfoViewController.h"
@@ -23,7 +22,8 @@
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    if (self) {
+    if (self)
+    {
         _model = [[Model alloc] init];
     }
     return self;
@@ -32,8 +32,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
     }
     return self;
 }
@@ -56,27 +56,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     self.currentRow = [self.delegate selectedRow];
     NSInteger rowIndex = self.currentRow.row;
     
     
-    
-    
     [self initializeInfoAtIndex:rowIndex];
-    
-    
-    
-    
-    
     
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

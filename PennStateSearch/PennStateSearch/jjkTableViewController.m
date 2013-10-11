@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 5
-// Date: October 4, 2013
+// Program: Assignment 6
+// Date: October 10, 2013
 //
 
 #import "jjkTableViewController.h"
@@ -25,12 +25,11 @@
 }
 
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
     }
     return self;
 }
@@ -38,17 +37,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     if(self)
     {
         [[[self tabBarController] navigationItem] setTitle:@"Search Results"];
+        [self.resultsTableView deselectRowAtIndexPath:[self.resultsTableView indexPathForSelectedRow] animated:YES];
         
     }
 }
@@ -56,14 +54,12 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
     return numberOfSections;
 }
-
 
 -(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -74,8 +70,6 @@
 {
     NSIndexPath *indexPath = [self.resultsTableView indexPathForSelectedRow];
     
-    NSLog(@"clicked %d", indexPath.row);
-    
     return indexPath;
 }
 
@@ -84,11 +78,13 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if(cell == nil){
+    if(cell == nil)
+    {
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
+    
     cell.textLabel.text = [self.model nameAtIndex:indexPath.row];
     cell.detailTextLabel.text = [self.model addressAtIndex:indexPath.row];
     
@@ -97,13 +93,14 @@
     
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{    
     if ([segue.identifier isEqualToString:@"InfoSegue"])
     {
         jjkDetailedInfoViewController *detailedInfoViewControler = segue.destinationViewController;
         detailedInfoViewControler.model = self.model;
+        detailedInfoViewControler.delegate = self;
     }
-    
 }
 
 

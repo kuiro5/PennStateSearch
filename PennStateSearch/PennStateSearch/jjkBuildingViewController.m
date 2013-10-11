@@ -1,9 +1,8 @@
 //
-//  jjkBuildingViewController.m
-//  PennStateSearch
-//
-//  Created by Joshua Kuiros on 10/7/13.
-//  Copyright (c) 2013 Joshua Kuiros. All rights reserved.
+// Name:    Joshua Kuiros
+// Section: CMPSC 475
+// Program: Assignment 6
+// Date: October 10, 2013
 //
 
 #import "jjkBuildingViewController.h"
@@ -46,8 +45,7 @@
 	// Do any additional setup after loading the view.
     
     self.pictureName = @"";
-    
-    
+
     [self.model displayBuildings];
 }
 
@@ -56,7 +54,8 @@
     [super viewDidAppear:animated];
     if(self)
     {
-        [[[self tabBarController] navigationItem] setTitle:@"PSU Buildling Directory"];
+        [[[self tabBarController] navigationItem] setTitle:@"PSU Buildlings"];
+        [self.buildingTableView deselectRowAtIndexPath:[self.buildingTableView indexPathForSelectedRow] animated:YES];
         
     }
 }
@@ -116,12 +115,12 @@
 {
     NSIndexPath *indexPath = [self.buildingTableView indexPathForSelectedRow];
     
-    NSLog(@"clicked %d", indexPath.row);
-    
     return indexPath;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
     if ([segue.identifier isEqualToString:@"BuildingSegue"])
     {
         jjkBuildingPhotoViewController *buildingInfoViewController = segue.destinationViewController;

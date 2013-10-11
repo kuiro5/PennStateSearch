@@ -1,12 +1,14 @@
 //
-//  jjkBuildingPhotoViewController.m
-//  PennStateSearch
-//
-//  Created by Joshua Kuiros on 10/9/13.
-//  Copyright (c) 2013 Joshua Kuiros. All rights reserved.
+// Name:    Joshua Kuiros
+// Section: CMPSC 475
+// Program: Assignment 6
+// Date: October 10, 2013
 //
 
 #import "jjkBuildingPhotoViewController.h"
+
+#define maxScale 2.0
+#define minScale 0.5
 
 @interface jjkBuildingPhotoViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *photoScrollView;
@@ -27,7 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     NSIndexPath *rowIndex = [self.delegate buildingRowSelected];
     NSInteger row = rowIndex.row;
@@ -45,11 +46,8 @@
     
     self.photoScrollView.contentSize = image.size;
     
-    self.photoScrollView.maximumZoomScale = 2.0;
-    self.photoScrollView.minimumZoomScale = .5;
-    //(self.photoScrollView.bounds.size.width)/(image.size.width);
-    
-    NSLog(@"%f", self.photoScrollView.minimumZoomScale);
+    self.photoScrollView.maximumZoomScale = maxScale;
+    self.photoScrollView.minimumZoomScale = minScale;
     
     self.photoScrollView.bounces = YES;
     self.photoScrollView.bouncesZoom = NO;
@@ -57,13 +55,13 @@
   
     self.photoScrollView.delegate = self;
     
-    // I forgot to add this line in class.  Delegate must be set before doing this.
     [self.photoScrollView zoomToRect:self.imageView.bounds animated:YES];
     
 }
 
 #pragma mark - ScrollView Delegate
--(UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+-(UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
     return self.imageView;
 }
 

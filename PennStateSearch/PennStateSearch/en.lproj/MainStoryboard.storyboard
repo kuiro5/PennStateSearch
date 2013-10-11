@@ -54,7 +54,7 @@
                             <constraint firstItem="uET-b3-yLH" firstAttribute="leading" secondItem="8tI-8A-7wr" secondAttribute="leading" type="default" id="hn6-67-BbI"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Buildings" id="TPs-FC-gEE"/>
+                    <tabBarItem key="tabBarItem" title="Buildings" image="tabbutton.png" id="TPs-FC-gEE"/>
                     <connections>
                         <outlet property="buildingTableView" destination="uET-b3-yLH" id="Shm-qf-gGw"/>
                     </connections>
@@ -73,10 +73,10 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4w5-nM-sbU"/>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="4w5-nM-sbU" firstAttribute="bottom" secondItem="3fU-5T-vn3" secondAttribute="bottom" type="default" id="6ls-0U-AXK"/>
                             <constraint firstItem="4w5-nM-sbU" firstAttribute="centerX" secondItem="3fU-5T-vn3" secondAttribute="centerX" type="default" id="IdE-vF-ALH"/>
+                            <constraint firstItem="4w5-nM-sbU" firstAttribute="bottom" secondItem="3fU-5T-vn3" secondAttribute="bottom" type="default" id="O8a-l7-EIh"/>
                             <constraint firstItem="4w5-nM-sbU" firstAttribute="leading" secondItem="3fU-5T-vn3" secondAttribute="leading" constant="2" id="Y0G-QJ-RF7"/>
                             <constraint firstItem="4w5-nM-sbU" firstAttribute="top" secondItem="3fU-5T-vn3" secondAttribute="top" type="default" id="kZz-vQ-skS"/>
                         </constraints>
@@ -207,7 +207,7 @@
                             <constraint firstItem="uJu-Cs-Nad" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="uoX-nu-lJZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Directory" id="Dpk-cg-bpH"/>
+                    <tabBarItem key="tabBarItem" title="People" image="tabbutton.png" id="Dpk-cg-bpH"/>
                     <navigationItem key="navigationItem" title="Penn State University" id="4Bm-mG-oOd"/>
                     <connections>
                         <outlet property="firstNameTextField" destination="RGt-Oy-FV1" id="toI-86-qQj"/>
@@ -246,9 +246,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="105" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ctm-Lv-S5N">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="411" id="zg1-eC-qCJ"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" textLabel="JXj-lR-r7I" detailTextLabel="kfU-xt-460" rowHeight="105" style="IBUITableViewCellStyleSubtitle" id="RTR-CB-CbU">
                                         <rect key="frame" x="0.0" y="22" width="320" height="105"/>
@@ -285,6 +282,7 @@
                         <constraints>
                             <constraint firstItem="ctm-Lv-S5N" firstAttribute="trailing" secondItem="Krq-kz-PNp" secondAttribute="trailing" type="default" id="8sq-eV-lu4"/>
                             <constraint firstItem="ctm-Lv-S5N" firstAttribute="top" secondItem="Krq-kz-PNp" secondAttribute="top" type="default" id="At8-AD-t4S"/>
+                            <constraint firstItem="ctm-Lv-S5N" firstAttribute="bottom" secondItem="Krq-kz-PNp" secondAttribute="bottom" type="default" id="OR5-jg-2BN"/>
                             <constraint firstItem="ctm-Lv-S5N" firstAttribute="leading" secondItem="Krq-kz-PNp" secondAttribute="leading" type="default" id="cyp-AS-0sD"/>
                         </constraints>
                     </view>
@@ -457,6 +455,9 @@
             <point key="canvasLocation" x="1861" y="-1242"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tabbutton.png" width="30" height="20"/>
+    </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
