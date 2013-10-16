@@ -30,6 +30,7 @@
 
 -(NSMutableArray*)buildingsArray;
 -(NSInteger)numberOfBuildings;
+-(NSInteger)numberOfBuildingsWithPhotos;;
 
 -(void)displayBuildings;
 -(NSArray*)sortArray:(NSMutableArray*)buildingsArray;
@@ -46,6 +47,12 @@
 -(NSString*)buildingPictureAtIndex:(NSInteger)index;
 
 -(void)clearResults;
+
+-(void)createBuildingsPhotoArray;
+
+-(NSString*)photoBuildingNameAtIndex:(NSInteger)index;
+-(NSString*)photoBuildingPictureAtIndex:(NSInteger)index;
+-(NSString*)photoBuildingOppCodeAtIndex:(NSInteger)index;
 
 @end
 

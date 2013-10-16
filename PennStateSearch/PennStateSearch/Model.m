@@ -14,6 +14,7 @@
 @property(strong, nonatomic) NSArray *results;
 @property(strong, nonatomic)NSMutableArray *buildingsInformation;
 @property(strong, nonatomic)NSArray *sortedBuildingsArray;
+@property(strong, nonatomic)NSMutableArray *sortedBuildingWithPhotos;
 
 @end
 
@@ -25,6 +26,7 @@
     if(self)
     {
         self.psuSearch = [[RHLDAPSearch alloc] initWithURL:@"ldap://ldap.psu.edu:389"];
+        self.sortedBuildingWithPhotos = [[NSMutableArray alloc] init];
     }
     return self; 
 }
@@ -50,6 +52,22 @@
     self.firstName = @"";
     self.lastName = @"";
     self.psuId = @"";
+}
+
+-(void)createBuildingsPhotoArray
+{
+    
+    for(int i = 0; i < [self.sortedBuildingsArray count]; i++)
+    {
+        NSDictionary *buildingDictionary = [self.sortedBuildingsArray objectAtIndex:i];
+        NSString *tempPhotoName = [buildingDictionary objectForKey:@"photo"];
+      
+        if([tempPhotoName length] != 0)
+        {
+            [self.sortedBuildingWithPhotos addObject:buildingDictionary];
+            
+        }
+    }
 }
 
 -(void)firstNameChanged:(UITextField*)textField
@@ -162,6 +180,11 @@
     return [self.buildingsInformation count];
 }
 
+-(NSInteger)numberOfBuildingsWithPhotos;
+{
+    return [self.sortedBuildingWithPhotos count];
+}
+
 -(NSMutableArray*)buildingsArray
 {
     NSBundle *bundle = [NSBundle mainBundle];
@@ -178,6 +201,7 @@
     NSArray * descriptors = [NSArray arrayWithObjects:nameDescriptor, nil];
     NSArray * sortedArray = [buildingsArray sortedArrayUsingDescriptors:descriptors];
     
+    
     return sortedArray;
 }
 
@@ -186,6 +210,11 @@
     NSMutableArray *buildingsArray = [self buildingsArray];
 
      self.sortedBuildingsArray = [self sortArray:buildingsArray];
+    
+    [self createBuildingsPhotoArray];
+    
+    
+    
 }
 
 
@@ -211,6 +240,32 @@
     NSNumber *buildingCode = [buildingDictionary objectForKey:@"opp_bldg_code"];
     NSString *buildingCodeString = [NSString stringWithFormat:@"%@", buildingCode];
 
+    
+    return buildingCodeString;
+}
+
+-(NSString*)photoBuildingNameAtIndex:(NSInteger)index
+{
+    NSDictionary *buildingDictionary = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSString *buildingName = [buildingDictionary objectForKey:@"name"];
+    
+    return buildingName;
+}
+
+-(NSString*)photoBuildingPictureAtIndex:(NSInteger)index
+{
+    NSDictionary *buildingDictionary = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSString *photoName = [buildingDictionary objectForKey:@"photo"];
+    
+    return photoName;
+}
+
+-(NSString*)photoBuildingOppCodeAtIndex:(NSInteger)index
+{
+    NSDictionary *buildingDictionary = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSNumber *buildingCode = [buildingDictionary objectForKey:@"opp_bldg_code"];
+    NSString *buildingCodeString = [NSString stringWithFormat:@"%@", buildingCode];
+    
     
     return buildingCodeString;
 }

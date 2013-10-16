@@ -7,10 +7,13 @@
 
 #import "jjkBuildingViewController.h"
 #import "jjkBuildingPhotoViewController.h"
+#import "jjkConstants.h"
+#import "jjkOptionsViewController.h"
 #define numberOfSections 1
 
 @interface jjkBuildingViewController () <BuildingDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *buildingTableView;
+@property (nonatomic,assign) BOOL showingBuildingsPhotos;
 
 @property(strong,nonatomic)NSString *pictureName;
 
@@ -49,6 +52,18 @@
     [self.model displayBuildings];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    NSNumber *boolNumber = [preferences objectForKey:buildingsWithPhotos];
+    self.showingBuildingsPhotos = [boolNumber boolValue];
+  
+    
+    
+    [self.buildingTableView reloadData];
+}
+
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -59,6 +74,8 @@
         
     }
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -75,40 +92,65 @@
 
 -(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.model numberOfBuildings];
+    if(self.showingBuildingsPhotos)
+    {
+        return [self.model numberOfBuildingsWithPhotos];
+    }
+    else
+    {
+        return [self.model numberOfBuildings];
+    }
 }
 
 -(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+
+    UITableViewCell *cell = nil;
     static NSString *CellIdentifier = @"BuildingCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
     
-    if(cell == nil){
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if(cell == nil)
+    {
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
     
-    cell.textLabel.text = [self.model buildingNameAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [self.model buildingOppCodeAtIndex:indexPath.row];
-    self.pictureName = [self.model buildingPictureAtIndex:indexPath.row];
     
-   
-    
-    if([self.pictureName length] == 0)
+    if(self.showingBuildingsPhotos)
     {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.userInteractionEnabled = NO;
+        
+            cell.textLabel.text = [self.model photoBuildingNameAtIndex:indexPath.row];
+            cell.detailTextLabel.text = [self.model photoBuildingOppCodeAtIndex:indexPath.row];
+            
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.userInteractionEnabled = YES;
+            
+        
     }
-    else
+    else if(!self.showingBuildingsPhotos)
     {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.userInteractionEnabled = YES;
+        
+        self.pictureName = [self.model buildingPictureAtIndex:indexPath.row];
+        cell.textLabel.text = [self.model buildingNameAtIndex:indexPath.row];
+        cell.detailTextLabel.text = [self.model buildingOppCodeAtIndex:indexPath.row];
+        
+        if([self.pictureName length] == 0)
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.userInteractionEnabled = NO;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.userInteractionEnabled = YES;
+            
+        }
     }
-    
-    
     return cell;
-    
 }
 
 - (NSIndexPath *)buildingRowSelected
@@ -126,6 +168,11 @@
         jjkBuildingPhotoViewController *buildingInfoViewController = segue.destinationViewController;
         buildingInfoViewController.model = self.model;
         buildingInfoViewController.delegate = self;
+    }
+    else if([segue.identifier isEqualToString:@"OptionsSegue"])
+    {
+        jjkOptionsViewController *optionsViewController = segue.destinationViewController;
+        optionsViewController.CompletionBlock = ^{[self dismissViewControllerAnimated:YES completion:NULL];};
     }
     
 }

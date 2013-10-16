@@ -6,6 +6,7 @@
 //
 
 #import "jjkBuildingPhotoViewController.h"
+#import "jjkConstants.h"
 
 #define maxScale 2.0
 #define minScale 0.5
@@ -13,6 +14,7 @@
 @interface jjkBuildingPhotoViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *photoScrollView;
 @property (strong,nonatomic) UIImageView *imageView;
+@property (nonatomic,assign) BOOL showingBuildingsPhotos;
 @end
 
 @implementation jjkBuildingPhotoViewController
@@ -26,16 +28,41 @@
     return self;
 }
 
-- (void)viewDidLoad
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    NSNumber *boolNumber = [preferences objectForKey:buildingsWithPhotos];
+    self.showingBuildingsPhotos = [boolNumber boolValue];
     
-    NSIndexPath *rowIndex = [self.delegate buildingRowSelected];
+    NSLog(@"bool value %@", boolNumber);
+    
+//}
+
+//- (void)viewDidLoad
+//{
+  //  [super viewDidLoad];
+    
+    NSIndexPath *rowIndex = [self.delegate buildingRowSelected];;
     NSInteger row = rowIndex.row;
+    NSString *photoName;
     
-    NSString *photoName = [self.model buildingPictureAtIndex:row];
+    
+    if(self.showingBuildingsPhotos)
+    {
+        
+        photoName = [self.model photoBuildingPictureAtIndex:row];
+    }
+    else
+    {
+        
+        photoName = [self.model buildingPictureAtIndex:row];
+    }
+    
+
     
     photoName = [photoName stringByAppendingString: @".jpg"];
+    
     
     UIImage *image = [UIImage imageNamed:photoName];
     _imageView = [[UIImageView alloc] initWithImage:image];
@@ -47,7 +74,7 @@
     self.photoScrollView.contentSize = image.size;
     
     self.photoScrollView.maximumZoomScale = maxScale;
-    self.photoScrollView.minimumZoomScale = minScale;
+    self.photoScrollView.minimumZoomScale = self.view.bounds.size.width/ image.size.width;
     
     self.photoScrollView.bounces = YES;
     self.photoScrollView.bouncesZoom = NO;

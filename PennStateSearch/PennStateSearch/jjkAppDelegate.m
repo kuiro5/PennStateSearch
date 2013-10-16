@@ -6,12 +6,16 @@
 //
 
 #import "jjkAppDelegate.h"
+#import "jjkConstants.h"
 
 @implementation jjkAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    [preferences registerDefaults:@{buildingsWithPhotos:@YES}];
+    [preferences registerDefaults:@{buildingsZoom:@YES}];
     return YES;
 }
 							
