@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *photoScrollView;
 @property (strong,nonatomic) UIImageView *imageView;
 @property (nonatomic,assign) BOOL showingBuildingsPhotos;
+@property (nonatomic,assign) BOOL zoomablePhotos;
 @end
 
 @implementation jjkBuildingPhotoViewController
@@ -34,6 +35,8 @@
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSNumber *boolNumber = [preferences objectForKey:buildingsWithPhotos];
     self.showingBuildingsPhotos = [boolNumber boolValue];
+    boolNumber = [preferences objectForKey:buildingsZoom];
+    self.zoomablePhotos = [boolNumber boolValue];
     
     NSLog(@"bool value %@", boolNumber);
     
@@ -73,8 +76,18 @@
     
     self.photoScrollView.contentSize = image.size;
     
-    self.photoScrollView.maximumZoomScale = maxScale;
     self.photoScrollView.minimumZoomScale = self.view.bounds.size.width/ image.size.width;
+    
+    if(self.zoomablePhotos)
+    {
+        self.photoScrollView.maximumZoomScale = maxScale;
+        
+    }
+    else
+    {
+        self.photoScrollView.maximumZoomScale = self.view.bounds.size.width/ image.size.width;
+    }
+    
     
     self.photoScrollView.bounces = YES;
     self.photoScrollView.bouncesZoom = NO;
