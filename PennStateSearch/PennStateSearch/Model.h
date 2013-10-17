@@ -9,6 +9,8 @@
 
 @interface Model : NSObject
 
++(id)sharedInstance;
+
 @property(strong,nonatomic)NSString* firstName;
 @property(strong,nonatomic)NSString* lastName;
 @property(strong,nonatomic)NSString* psuId;
@@ -28,12 +30,12 @@
 -(NSString *)nameAtIndex:(NSInteger)index;
 -(NSString*)addressAtIndex:(NSInteger)index;
 
--(NSMutableArray*)buildingsArray;
+//-(NSMutableArray*)buildingsArray;
 -(NSInteger)numberOfBuildings;
 -(NSInteger)numberOfBuildingsWithPhotos;;
 
 -(void)displayBuildings;
--(NSArray*)sortArray:(NSMutableArray*)buildingsArray;
+-(NSArray*)sortArray;
 
 -(NSString*)buildingOppCodeAtIndex:(NSInteger)index;
 -(NSString*)buildingNameAtIndex:(NSInteger)index;

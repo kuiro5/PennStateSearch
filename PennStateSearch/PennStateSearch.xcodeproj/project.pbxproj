@@ -65,6 +65,7 @@
 		7B8CFAF3180383D5004365AB /* jjkBuildingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CFAF2180383D5004365AB /* jjkBuildingViewController.m */; };
 		7B9E5619180DCF1C0082955D /* jjkOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E5618180DCF1C0082955D /* jjkOptionsViewController.m */; };
 		7B9E5621180DD41D0082955D /* jjkConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E5620180DD41D0082955D /* jjkConstants.m */; };
+		7B9E562C180F32BA0082955D /* jjkBuildingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E562B180F32BA0082955D /* jjkBuildingInfo.m */; };
 		7BA2A42B18061B00004B938A /* jjkDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2A42A18061B00004B938A /* jjkDetailedInfoViewController.m */; };
 		7BA2A44218063E6A004B938A /* jjkBuildingPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2A44118063E6A004B938A /* jjkBuildingPhotoViewController.m */; };
 /* End PBXBuildFile section */
@@ -146,6 +147,8 @@
 		7B9E5618180DCF1C0082955D /* jjkOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jjkOptionsViewController.m; sourceTree = "<group>"; };
 		7B9E561F180DD41D0082955D /* jjkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjkConstants.h; sourceTree = "<group>"; };
 		7B9E5620180DD41D0082955D /* jjkConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jjkConstants.m; sourceTree = "<group>"; };
+		7B9E562A180F32BA0082955D /* jjkBuildingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjkBuildingInfo.h; sourceTree = "<group>"; };
+		7B9E562B180F32BA0082955D /* jjkBuildingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jjkBuildingInfo.m; sourceTree = "<group>"; };
 		7BA2A42918061B00004B938A /* jjkDetailedInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = jjkDetailedInfoViewController.h; path = ../jjkDetailedInfoViewController.h; sourceTree = "<group>"; };
 		7BA2A42A18061B00004B938A /* jjkDetailedInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jjkDetailedInfoViewController.m; path = ../jjkDetailedInfoViewController.m; sourceTree = "<group>"; };
 		7BA2A44018063E6A004B938A /* jjkBuildingPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjkBuildingPhotoViewController.h; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 		7B1E783318077389008F343A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7B9E562A180F32BA0082955D /* jjkBuildingInfo.h */,
+				7B9E562B180F32BA0082955D /* jjkBuildingInfo.m */,
 				7B04EFBD17FC48F1006087EB /* Model.h */,
 				7B04EFBE17FC48F1006087EB /* Model.m */,
 			);
@@ -467,6 +472,7 @@
 				7BA2A44218063E6A004B938A /* jjkBuildingPhotoViewController.m in Sources */,
 				7B9E5619180DCF1C0082955D /* jjkOptionsViewController.m in Sources */,
 				7B9E5621180DD41D0082955D /* jjkConstants.m in Sources */,
+				7B9E562C180F32BA0082955D /* jjkBuildingInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
