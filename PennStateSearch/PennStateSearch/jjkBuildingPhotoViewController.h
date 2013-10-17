@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 6
-// Date: October 10, 2013
+// Program: Assignment 7
+// Date: October 17, 2013
 //
 
 #import <UIKit/UIKit.h>

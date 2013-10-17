@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 6
-// Date: October 10, 2013
+// Program: Assignment 7
+// Date: October 17, 2013
 //
 
 #import "jjkBuildingPhotoViewController.h"
@@ -23,7 +23,8 @@
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    if (self) {
+    if (self)
+    {
         _model = [[Model alloc] init];
     }
     return self;
@@ -38,13 +39,6 @@
     boolNumber = [preferences objectForKey:buildingsZoom];
     self.zoomablePhotos = [boolNumber boolValue];
     
-    NSLog(@"bool value %@", boolNumber);
-    
-//}
-
-//- (void)viewDidLoad
-//{
-  //  [super viewDidLoad];
     
     NSIndexPath *rowIndex = [self.delegate buildingRowSelected];;
     NSInteger row = rowIndex.row;
@@ -55,15 +49,16 @@
     {
         
         photoName = [self.model photoBuildingPictureAtIndex:row];
+        self.navigationItem.title = [self.model photoBuildingNameAtIndex:row];
     }
     else
     {
         
         photoName = [self.model buildingPictureAtIndex:row];
+        self.navigationItem.title = [self.model buildingNameAtIndex:row];
     }
     
 
-    
     photoName = [photoName stringByAppendingString: @".jpg"];
     
     

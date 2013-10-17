@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 6
-// Date: October 10, 2013
+// Program: Assignment 7
+// Date: October 17, 2013
 //
 
 #import "jjkDetailedInfoViewController.h"
@@ -39,18 +39,14 @@
 }
 
 -(void)initializeInfoAtIndex:(NSInteger)index
-{
-    
+{    
     self.nameLabel.text = [self.model nameAtIndex:index];
     self.affiliationLabel.text = [self.model affiliationAtIndex:index];
     self.majorLabel.text = [self.model majorAtIndex:index];
     self.campusLabel.text = [self.model campusAtIndex:index];
     self.emailLabel.text = [self.model emailAtIndex:index];
     self.mobileLabel.text = [self.model mobileAtIndex:index];
-    
-    
 }
-
 
 
 - (void)viewDidLoad
@@ -60,16 +56,12 @@
     self.currentRow = [self.delegate selectedRow];
     NSInteger rowIndex = self.currentRow.row;
     
-    
     [self initializeInfoAtIndex:rowIndex];
-    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
-
-
 
 @end

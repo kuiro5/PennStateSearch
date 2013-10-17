@@ -1,9 +1,8 @@
 //
-//  StateInfo.m
-//  US States
-//
-//  Created by hannan on 10/10/13.
-//  Copyright (c) 2013 hannan. All rights reserved.
+// Name:    Joshua Kuiros
+// Section: CMPSC 475
+// Program: Assignment 7
+// Date: October 17, 2013
 //
 
 #import "jjkBuildingInfo.h"

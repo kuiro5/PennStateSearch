@@ -1,9 +1,8 @@
 //
-//  jjkOptionsViewController.m
-//  PennStateSearch
-//
-//  Created by Joshua Kuiros on 10/15/13.
-//  Copyright (c) 2013 Joshua Kuiros. All rights reserved.
+// Name:    Joshua Kuiros
+// Section: CMPSC 475
+// Program: Assignment 7
+// Date: October 17, 2013
 //
 
 #import "jjkOptionsViewController.h"
@@ -21,8 +20,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
     }
     return self;
 }
@@ -30,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSNumber *boolZoom = [preferences objectForKey:buildingsZoom];
     NSNumber *boolPhotos = [preferences objectForKey:buildingsWithPhotos];
@@ -42,7 +41,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)dismissPressed:(id)sender
@@ -53,7 +51,5 @@
     [preferences synchronize];
     
     self.CompletionBlock();
-        
-    
 }
 @end

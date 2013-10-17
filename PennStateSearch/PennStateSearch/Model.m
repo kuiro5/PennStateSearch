@@ -1,13 +1,14 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 6
-// Date: October 10, 2013
+// Program: Assignment 7
+// Date: October 17, 2013
 //
 
 #import "Model.h"
 #import "jjkBuildingInfo.h"
 #import "RHLDAPSearch.h"
+
 static NSString * const filename = @"buildings";
 
 @interface Model ()
@@ -23,7 +24,8 @@ static NSString * const filename = @"buildings";
 
 @implementation Model
 
-+(id)sharedInstance {
++(id)sharedInstance
+{
     static id singleton = nil;
     if (!singleton) {
         singleton = [[self alloc] init];
@@ -72,10 +74,6 @@ static NSString * const filename = @"buildings";
                 [_buildingsInformation addObject:info];
             }
             
-           
-            
-            
-            
             
             [NSKeyedArchiver archiveRootObject:_buildingsInformation toFile:[self filePath]];
         }
@@ -85,7 +83,6 @@ static NSString * const filename = @"buildings";
 
 }
 
-#pragma mark - File System
 -(NSString*)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
@@ -98,7 +95,6 @@ static NSString * const filename = @"buildings";
     NSString *path = [self filePath];
     return [[NSFileManager defaultManager] fileExistsAtPath:path];
 }
-
 
 
 -(NSString*)currentFirstName
@@ -123,22 +119,7 @@ static NSString * const filename = @"buildings";
     self.psuId = @"";
 }
 
--(void)createBuildingsPhotoArray
-{
-    
-    for(int i = 0; i < [self.buildingsInformation count]; i++)
-    {
-        
-        jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:i];
-        NSString *tempPhotoName = info.photoName;
-      
-        if([tempPhotoName length] != 0)
-        {
-            [self.sortedBuildingWithPhotos addObject:info];
-            
-        }
-    }
-}
+
 
 -(void)firstNameChanged:(UITextField*)textField
 {
@@ -255,35 +236,19 @@ static NSString * const filename = @"buildings";
     return [self.sortedBuildingWithPhotos count];
 }
 
-/*-(NSMutableArray*)buildingsArray
-{
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *buildingsFile = [bundle pathForResource:@"buildings" ofType:@".plist"];
-    self.buildingsInformation = [[NSMutableArray alloc] initWithContentsOfFile:buildingsFile];
-    
-    return self.buildingsInformation;
-}*/
-
 -(NSArray*)sortArray
 {
-    NSLog(@"sort getting called");
-    
+
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
 
     NSArray *tempArray = [self.temporaryBuildingArray sortedArrayUsingDescriptors:@[sortDescriptor]];
     
     return tempArray;
-    
-
 }
+
 
 -(void)displayBuildings
 {
-   // NSMutableArray *buildingsArray = self.buildingsInformation;
-
-     //self.sortedBuildingsArray = [self sortArray:buildingsArray];
-    
-    //[self sortArray];
     
     [self createBuildingsPhotoArray];
 
@@ -294,10 +259,6 @@ static NSString * const filename = @"buildings";
 {
     jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:index];
     NSString *buildingName = info.building;
-    
-    
-    
-    
     
     return buildingName;
 }
@@ -318,6 +279,23 @@ static NSString * const filename = @"buildings";
 
     
     return buildingCodeString;
+}
+
+-(void)createBuildingsPhotoArray
+{
+    
+    for(int i = 0; i < [self.buildingsInformation count]; i++)
+    {
+        
+        jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:i];
+        NSString *tempPhotoName = info.photoName;
+        
+        if([tempPhotoName length] != 0)
+        {
+            [self.sortedBuildingWithPhotos addObject:info];
+            
+        }
+    }
 }
 
 -(NSString*)photoBuildingNameAtIndex:(NSInteger)index

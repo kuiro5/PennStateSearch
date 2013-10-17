@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 6
-// Date: October 10, 2013
+// Program: Assignment 7
+// Date: October 17, 2013
 //
 
 #import "jjkViewController.h"
@@ -24,9 +24,11 @@
 
 @implementation jjkViewController
 
--(id)initWithCoder:(NSCoder *)aDecoder {
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
     self = [super initWithCoder:aDecoder];
-    if (self) {
+    if (self)
+    {
         _model = [[Model alloc] init];
     }
     return self;
@@ -54,7 +56,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -62,7 +63,6 @@
     if ([segue.identifier isEqualToString:@"searchSegue"])
     {
         jjkTableViewController *tableViewController = segue.destinationViewController;
-        //tableViewController.delegate = self;
         tableViewController.model = self.model;
     }
     
@@ -106,9 +106,6 @@
     {
         self.searchButton.enabled = YES;
     }
-    
-    
-    
 }
 
 -(void)textFieldDidBeginEditing:(UITextField*)textField{
@@ -116,7 +113,6 @@
     NSInteger textFieldTag = textField.tag;
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0,  0.0, keyboardHeight,  0.0);
     self.scrollView.contentInset = contentInsets;
-    
     
     if(textFieldTag == 2)
     {

@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 6
-// Date: October 10, 2013
+// Program: Assignment 7
+// Date: October 17, 2013
 //
 
 #import "jjkBuildingViewController.h"
@@ -36,8 +36,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
     }
     return self;
 }
@@ -45,21 +45,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     self.pictureName = @"";
 
     [self.model displayBuildings];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSNumber *boolNumber = [preferences objectForKey:buildingsWithPhotos];
     self.showingBuildingsPhotos = [boolNumber boolValue];
   
-    
-    
     [self.buildingTableView reloadData];
 }
 
@@ -80,7 +78,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -107,8 +104,6 @@
 
     UITableViewCell *cell = nil;
     static NSString *CellIdentifier = @"BuildingCell";
-
-    
     
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -176,12 +171,5 @@
     }
     
 }
-
-
-
-
-
-
-
 
 @end
