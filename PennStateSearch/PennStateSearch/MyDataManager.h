@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DataManagerDelegate.h"
 
-@interface MyDataManager : NSObject
+@interface MyDataManager : NSObject <DataManagerDelegate>
 
 @end

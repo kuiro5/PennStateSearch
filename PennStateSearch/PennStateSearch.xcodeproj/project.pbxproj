@@ -69,8 +69,9 @@
 		7BA2A42B18061B00004B938A /* jjkDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2A42A18061B00004B938A /* jjkDetailedInfoViewController.m */; };
 		7BA2A44218063E6A004B938A /* jjkBuildingPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2A44118063E6A004B938A /* jjkBuildingPhotoViewController.m */; };
 		7BC1EDD51815CD680095C90E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC1EDD21815CD370095C90E /* CoreData.framework */; };
-		7BC1EDE51815D0C10095C90E /* MyDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDE41815D0C10095C90E /* MyDataManager.m */; };
-		7BC1EDF01815D1BA0095C90E /* Buildings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDEE1815D1BA0095C90E /* Buildings.xcdatamodeld */; };
+		7BC1EDF91815D8260095C90E /* Buildings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDF71815D8260095C90E /* Buildings.xcdatamodeld */; };
+		7BC1EDFF1815D9950095C90E /* MyDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDFE1815D9950095C90E /* MyDataManager.m */; };
+		7BC1EE021815DB7A0095C90E /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EE011815DB7A0095C90E /* Building.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,9 +164,11 @@
 		7BC1EDD91815CE0A0095C90E /* DataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		7BC1EDDA1815CE0A0095C90E /* DataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		7BC1EDDB1815CE0A0095C90E /* DataSourceCellConfigurer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSourceCellConfigurer.h; sourceTree = "<group>"; };
-		7BC1EDE31815D0C10095C90E /* MyDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataManager.h; sourceTree = "<group>"; };
-		7BC1EDE41815D0C10095C90E /* MyDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataManager.m; sourceTree = "<group>"; };
-		7BC1EDEF1815D1BA0095C90E /* Buildings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Buildings.xcdatamodel; sourceTree = "<group>"; };
+		7BC1EDF81815D8260095C90E /* Buildings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Buildings.xcdatamodel; sourceTree = "<group>"; };
+		7BC1EDFD1815D9940095C90E /* MyDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataManager.h; sourceTree = "<group>"; };
+		7BC1EDFE1815D9950095C90E /* MyDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataManager.m; sourceTree = "<group>"; };
+		7BC1EE001815DB7A0095C90E /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
+		7BC1EE011815DB7A0095C90E /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,9 +312,11 @@
 				7B9E562B180F32BA0082955D /* jjkBuildingInfo.m */,
 				7B04EFBD17FC48F1006087EB /* Model.h */,
 				7B04EFBE17FC48F1006087EB /* Model.m */,
-				7BC1EDE31815D0C10095C90E /* MyDataManager.h */,
-				7BC1EDE41815D0C10095C90E /* MyDataManager.m */,
-				7BC1EDEE1815D1BA0095C90E /* Buildings.xcdatamodeld */,
+				7BC1EDF71815D8260095C90E /* Buildings.xcdatamodeld */,
+				7BC1EE001815DB7A0095C90E /* Building.h */,
+				7BC1EE011815DB7A0095C90E /* Building.m */,
+				7BC1EDFD1815D9940095C90E /* MyDataManager.h */,
+				7BC1EDFE1815D9950095C90E /* MyDataManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -497,8 +502,9 @@
 				7B9E5619180DCF1C0082955D /* jjkOptionsViewController.m in Sources */,
 				7B9E5621180DD41D0082955D /* jjkConstants.m in Sources */,
 				7B9E562C180F32BA0082955D /* jjkBuildingInfo.m in Sources */,
-				7BC1EDE51815D0C10095C90E /* MyDataManager.m in Sources */,
-				7BC1EDF01815D1BA0095C90E /* Buildings.xcdatamodeld in Sources */,
+				7BC1EDF91815D8260095C90E /* Buildings.xcdatamodeld in Sources */,
+				7BC1EDFF1815D9950095C90E /* MyDataManager.m in Sources */,
+				7BC1EE021815DB7A0095C90E /* Building.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,12 +636,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7BC1EDEE1815D1BA0095C90E /* Buildings.xcdatamodeld */ = {
+		7BC1EDF71815D8260095C90E /* Buildings.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7BC1EDEF1815D1BA0095C90E /* Buildings.xcdatamodel */,
+				7BC1EDF81815D8260095C90E /* Buildings.xcdatamodel */,
 			);
-			currentVersion = 7BC1EDEF1815D1BA0095C90E /* Buildings.xcdatamodel */;
+			currentVersion = 7BC1EDF81815D8260095C90E /* Buildings.xcdatamodel */;
 			path = Buildings.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
