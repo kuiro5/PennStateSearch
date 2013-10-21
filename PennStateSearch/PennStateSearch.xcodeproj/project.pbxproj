@@ -72,6 +72,8 @@
 		7BC1EDF91815D8260095C90E /* Buildings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDF71815D8260095C90E /* Buildings.xcdatamodeld */; };
 		7BC1EDFF1815D9950095C90E /* MyDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDFE1815D9950095C90E /* MyDataManager.m */; };
 		7BC1EE021815DB7A0095C90E /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EE011815DB7A0095C90E /* Building.m */; };
+		7BC1EE071815E1A50095C90E /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDD71815CE0A0095C90E /* DataManager.m */; };
+		7BC1EE091815E1AF0095C90E /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDDA1815CE0A0095C90E /* DataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -490,6 +492,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BC1EE091815E1AF0095C90E /* DataSource.m in Sources */,
+				7BC1EE071815E1A50095C90E /* DataManager.m in Sources */,
 				7B04EFA417FC4728006087EB /* main.m in Sources */,
 				7B04EFA817FC4728006087EB /* jjkAppDelegate.m in Sources */,
 				7B04EFB417FC4729006087EB /* jjkViewController.m in Sources */,

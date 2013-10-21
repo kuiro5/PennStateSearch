@@ -21,7 +21,7 @@
 {
     
     NSBundle *bundle = [NSBundle mainBundle];
-    NSString *plistPath = [bundle pathForResource:@"Buildings" ofType:@"plist"];
+    NSString *plistPath = [bundle pathForResource:@"buildings" ofType:@"plist"];
     NSArray *buildingArray = [NSArray arrayWithContentsOfFile:plistPath];
     
     NSManagedObjectContext *managedObjectContext = dataManager.managedObjectContext;
@@ -33,8 +33,9 @@
         building.name = [dictionary objectForKey:@"name"];
         building.latitude = [dictionary objectForKey:@"latitude"];
         building.longitude = [dictionary objectForKey:@"longitude"];
+        building.opp_bldg_code = [dictionary objectForKey:@"opp_bldg_code"];
         
-        NSString *photo = [NSString stringWithFormat:@"photo"];
+        NSString *photo = [NSString stringWithFormat:@"%@", photo];
         photo = [photo stringByAppendingString: @".jpg"];
         building.photoName = photo;
         

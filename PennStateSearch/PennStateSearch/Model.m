@@ -8,6 +8,9 @@
 #import "Model.h"
 #import "jjkBuildingInfo.h"
 #import "RHLDAPSearch.h"
+#import "DataManager.h"
+#import "MyDataManager.h"
+#import "Building.h"
 
 static NSString * const filename = @"buildings";
 
@@ -38,6 +41,7 @@ static NSString * const filename = @"buildings";
     self = [super init];
     if(self)
     {
+        // initialization
         self.psuSearch = [[RHLDAPSearch alloc] initWithURL:@"ldap://ldap.psu.edu:389"];
         self.sortedBuildingWithPhotos = [[NSMutableArray alloc] init];
         
@@ -52,27 +56,37 @@ static NSString * const filename = @"buildings";
         }
         else
         {
-            NSBundle *bundle = [NSBundle mainBundle];
-            NSString *path = [bundle pathForResource:@"buildings" ofType:@"plist"];
-            self.temporaryBuildingArray = [NSArray arrayWithContentsOfFile:path];
+            //NSBundle *bundle = [NSBundle mainBundle];
+            //NSString *path = [bundle pathForResource:@"buildings" ofType:@"plist"];
+            //self.temporaryBuildingArray = [NSArray arrayWithContentsOfFile:path];
+            
+            // coredata objects
+            DataManager *dataManager = [DataManager sharedInstance];
+            MyDataManager *myDataManager = [[MyDataManager alloc]init];
+            dataManager.delegate = myDataManager;
+            
+            NSArray *sortedTempArray = [dataManager fetchManagedObjectsForEntity:@"Building" sortKeys:@[@"name"] predicate:nil];
+            
+            //self.temporaryBuildingArray = [sortedTempArray mutableCopy];
             
             
-            NSArray *sortedTempArray = [self sortArray];
             
-            self.temporaryBuildingArray = [(NSArray*)sortedTempArray mutableCopy];
+            //[self.temporaryBuildingArray writeToFile:[self filePath] atomically:YES];
+            
+            _buildingsInformation = [[NSMutableArray alloc] initWithArray:sortedTempArray];
             
             
-            
-            [self.temporaryBuildingArray writeToFile:[self filePath] atomically:YES];
-            
-            _buildingsInformation = [NSMutableArray array];
-            for (NSDictionary *dict in self.temporaryBuildingArray) {
+            /*for (NSDictionary *dict in self.temporaryBuildingArray)
+            {
+                //NSString *name = ;
+                //NSInteger oppCode ;
+                //NSString *photoName ;
                 jjkBuildingInfo *info = [[jjkBuildingInfo alloc] initWithBuilding:dict[@"name"] oppCode:dict[@"opp_bldg_code"] photo:dict[@"photo"]];
                
                 
                 
                 [_buildingsInformation addObject:info];
-            }
+            }*/
             
             
             [NSKeyedArchiver archiveRootObject:_buildingsInformation toFile:[self filePath]];
