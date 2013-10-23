@@ -55,6 +55,9 @@
 -(NSString*)photoBuildingPictureAtIndex:(NSInteger)index;
 -(NSString*)photoBuildingOppCodeAtIndex:(NSInteger)index;
 
+-(UIImage*)photoImageAtIndex:(NSInteger)index;
+-(UIImage*)imageAtIndex:(NSInteger)index;
+
 @end
 
 

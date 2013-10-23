@@ -46,16 +46,16 @@ static NSString * const filename = @"buildings";
         self.sortedBuildingWithPhotos = [[NSMutableArray alloc] init];
         
         
-        if ([self fileExists])
-        {
-            NSString *path = [self filePath];
-            self.buildingsInformation = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+       // if ([self fileExists])
+        //{
+          //  NSString *path = [self filePath];
+            //self.buildingsInformation = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
             
             
             
-        }
-        else
-        {
+       // }
+        //else
+        //{
             //NSBundle *bundle = [NSBundle mainBundle];
             //NSString *path = [bundle pathForResource:@"buildings" ofType:@"plist"];
             //self.temporaryBuildingArray = [NSArray arrayWithContentsOfFile:path];
@@ -89,8 +89,8 @@ static NSString * const filename = @"buildings";
             }*/
             
             
-            [NSKeyedArchiver archiveRootObject:_buildingsInformation toFile:[self filePath]];
-        }
+          //  [NSKeyedArchiver archiveRootObject:_buildingsInformation toFile:[self filePath]];
+        //}
         
     }
     return self;
@@ -271,24 +271,40 @@ static NSString * const filename = @"buildings";
 
 -(NSString*)buildingNameAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:index];
-    NSString *buildingName = info.building;
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    NSString *buildingName = building.name;
     
     return buildingName;
 }
 
 -(NSString*)buildingPictureAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:index];
-    NSString *photoName = info.photoName;
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    NSString *photoName = building.photoName;
     
     return photoName;
 }
 
+-(UIImage*)imageAtIndex:(NSInteger)index
+{
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    UIImage* image = [[UIImage alloc] initWithData:building.photo];
+    
+    return image;
+}
+
+-(UIImage*)photoImageAtIndex:(NSInteger)index
+{
+    Building *building = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    UIImage* image = [[UIImage alloc] initWithData:building.photo];
+    
+    return image;
+}
+
 -(NSString*)buildingOppCodeAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:index];
-    NSNumber *buildingCode = info.oppCode;
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    NSNumber *buildingCode = building.opp_bldg_code;
     NSString *buildingCodeString = [NSString stringWithFormat:@"%@", buildingCode];
 
     
@@ -301,12 +317,12 @@ static NSString * const filename = @"buildings";
     for(int i = 0; i < [self.buildingsInformation count]; i++)
     {
         
-        jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:i];
-        NSString *tempPhotoName = info.photoName;
+        Building *building = [self.buildingsInformation objectAtIndex:i];
+        NSString *tempPhotoName = building.photoName;
         
         if([tempPhotoName length] != 0)
         {
-            [self.sortedBuildingWithPhotos addObject:info];
+            [self.sortedBuildingWithPhotos addObject:building];
             
         }
     }
@@ -314,24 +330,24 @@ static NSString * const filename = @"buildings";
 
 -(NSString*)photoBuildingNameAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.sortedBuildingWithPhotos objectAtIndex:index];
-    NSString *buildingName = info.building;
+    Building *building = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSString *buildingName = building.name;
     
     return buildingName;
 }
 
 -(NSString*)photoBuildingPictureAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.sortedBuildingWithPhotos objectAtIndex:index];
-    NSString *photoName = info.photoName;
+    Building *building = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSString *photoName = building.name;
     
     return photoName;
 }
 
 -(NSString*)photoBuildingOppCodeAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info  = [self.sortedBuildingWithPhotos objectAtIndex:index];
-    NSNumber *buildingCode = info.oppCode;
+    Building *building  = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSNumber *buildingCode = building.opp_bldg_code;
     NSString *buildingCodeString = [NSString stringWithFormat:@"%@", buildingCode];
     
     

@@ -42,28 +42,30 @@
     
     NSIndexPath *rowIndex = [self.delegate buildingRowSelected];;
     NSInteger row = rowIndex.row;
-    NSString *photoName;
-    
+    //NSString *photoName;
+    UIImage *image;
     
     if(self.showingBuildingsPhotos)
     {
         
-        photoName = [self.model photoBuildingPictureAtIndex:row];
+        image = [self.model photoImageAtIndex:row];
+        _imageView = [[UIImageView alloc] initWithImage:image];
         self.navigationItem.title = [self.model photoBuildingNameAtIndex:row];
     }
     else
     {
         
-        photoName = [self.model buildingPictureAtIndex:row];
+        image = [self.model imageAtIndex:row];
+        _imageView = [[UIImageView alloc] initWithImage:image];
         self.navigationItem.title = [self.model buildingNameAtIndex:row];
     }
     
 
-    photoName = [photoName stringByAppendingString: @".jpg"];
+    //photoName = [photoName stringByAppendingString: @".jpg"];
     
     
-    UIImage *image = [UIImage imageNamed:photoName];
-    _imageView = [[UIImageView alloc] initWithImage:image];
+    //UIImage *image = [UIImage imageNamed:photoName];
+    //_imageView = [[UIImageView alloc] initWithImage:image];
     
     
     [self.photoScrollView addSubview:self.imageView];

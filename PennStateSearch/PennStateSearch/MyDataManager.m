@@ -34,9 +34,16 @@
         building.latitude = [dictionary objectForKey:@"latitude"];
         building.longitude = [dictionary objectForKey:@"longitude"];
         building.opp_bldg_code = [dictionary objectForKey:@"opp_bldg_code"];
+        building.year_constructed = [dictionary objectForKey:@"year_constructed"];
         
-        NSString *photo = [NSString stringWithFormat:@"%@", photo];
-        photo = [photo stringByAppendingString: @".jpg"];
+        NSString *photo = [dictionary objectForKey:@"photo"];
+        photo = [NSString stringWithFormat:@"%@", photo];
+        
+        if([photo length] != 0)
+        {
+            photo = [photo stringByAppendingString: @".jpg"];
+        }
+        
         building.photoName = photo;
         
         UIImage *buildingImage = [UIImage imageNamed: photo];
