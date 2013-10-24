@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 7
-// Date: October 17, 2013
+// Program: Assignment 8
+// Date: October 24, 2013
 //
 
 #import "Model.h"
@@ -30,7 +30,8 @@ static NSString * const filename = @"buildings";
 +(id)sharedInstance
 {
     static id singleton = nil;
-    if (!singleton) {
+    if (!singleton)
+    {
         singleton = [[self alloc] init];
     }
     return singleton;
@@ -45,67 +46,31 @@ static NSString * const filename = @"buildings";
         self.psuSearch = [[RHLDAPSearch alloc] initWithURL:@"ldap://ldap.psu.edu:389"];
         self.sortedBuildingWithPhotos = [[NSMutableArray alloc] init];
         
-        
-       // if ([self fileExists])
-        //{
-          //  NSString *path = [self filePath];
-            //self.buildingsInformation = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
             
+        // coredata objects
+        DataManager *dataManager = [DataManager sharedInstance];
+        MyDataManager *myDataManager = [[MyDataManager alloc]init];
+        dataManager.delegate = myDataManager;
             
+        NSArray *sortedTempArray = [dataManager fetchManagedObjectsForEntity:@"Building" sortKeys:@[@"name"] predicate:nil];
             
-       // }
-        //else
-        //{
-            //NSBundle *bundle = [NSBundle mainBundle];
-            //NSString *path = [bundle pathForResource:@"buildings" ofType:@"plist"];
-            //self.temporaryBuildingArray = [NSArray arrayWithContentsOfFile:path];
-            
-            // coredata objects
-            DataManager *dataManager = [DataManager sharedInstance];
-            MyDataManager *myDataManager = [[MyDataManager alloc]init];
-            dataManager.delegate = myDataManager;
-            
-            NSArray *sortedTempArray = [dataManager fetchManagedObjectsForEntity:@"Building" sortKeys:@[@"name"] predicate:nil];
-            
-            //self.temporaryBuildingArray = [sortedTempArray mutableCopy];
-            
-            
-            
-            //[self.temporaryBuildingArray writeToFile:[self filePath] atomically:YES];
-            
-            _buildingsInformation = [[NSMutableArray alloc] initWithArray:sortedTempArray];
-            
-            
-            /*for (NSDictionary *dict in self.temporaryBuildingArray)
-            {
-                //NSString *name = ;
-                //NSInteger oppCode ;
-                //NSString *photoName ;
-                jjkBuildingInfo *info = [[jjkBuildingInfo alloc] initWithBuilding:dict[@"name"] oppCode:dict[@"opp_bldg_code"] photo:dict[@"photo"]];
-               
-                
-                
-                [_buildingsInformation addObject:info];
-            }*/
-            
-            
-          //  [NSKeyedArchiver archiveRootObject:_buildingsInformation toFile:[self filePath]];
-        //}
-        
+        _buildingsInformation = [[NSMutableArray alloc] initWithArray:sortedTempArray];
     }
     return self;
-
 }
 
--(NSString*)applicationDocumentsDirectory {
+-(NSString*)applicationDocumentsDirectory
+{
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
--(NSString *)filePath {
+-(NSString *)filePath
+{
     return [[self applicationDocumentsDirectory] stringByAppendingPathComponent:filename];
 }
 
--(BOOL)fileExists {
+-(BOOL)fileExists
+{
     NSString *path = [self filePath];
     return [[NSFileManager defaultManager] fileExistsAtPath:path];
 }
@@ -267,7 +232,6 @@ static NSString * const filename = @"buildings";
     [self createBuildingsPhotoArray];
 
 }
-
 
 -(NSString*)buildingNameAtIndex:(NSInteger)index
 {
