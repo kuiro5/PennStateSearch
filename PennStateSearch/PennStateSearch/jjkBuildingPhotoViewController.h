@@ -18,5 +18,6 @@
 
 @property (strong,nonatomic) Model *model;
 @property (retain,nonatomic) id<BuildingDelegate> delegate;
+@property (retain,nonatomic) UIImage *buildingPhoto;
 
 @end

@@ -74,6 +74,7 @@
 		7BC1EE021815DB7A0095C90E /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EE011815DB7A0095C90E /* Building.m */; };
 		7BC1EE071815E1A50095C90E /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDD71815CE0A0095C90E /* DataManager.m */; };
 		7BC1EE091815E1AF0095C90E /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDDA1815CE0A0095C90E /* DataSource.m */; };
+		7BF1F8961818A9C500493523 /* Building+Name.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF1F8951818A9C500493523 /* Building+Name.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +172,8 @@
 		7BC1EDFE1815D9950095C90E /* MyDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataManager.m; sourceTree = "<group>"; };
 		7BC1EE001815DB7A0095C90E /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
 		7BC1EE011815DB7A0095C90E /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
+		7BF1F8941818A9C500493523 /* Building+Name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Building+Name.h"; sourceTree = "<group>"; };
+		7BF1F8951818A9C500493523 /* Building+Name.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Building+Name.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +322,8 @@
 				7BC1EE011815DB7A0095C90E /* Building.m */,
 				7BC1EDFD1815D9940095C90E /* MyDataManager.h */,
 				7BC1EDFE1815D9950095C90E /* MyDataManager.m */,
+				7BF1F8941818A9C500493523 /* Building+Name.h */,
+				7BF1F8951818A9C500493523 /* Building+Name.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -509,6 +514,7 @@
 				7BC1EDF91815D8260095C90E /* Buildings.xcdatamodeld in Sources */,
 				7BC1EDFF1815D9950095C90E /* MyDataManager.m in Sources */,
 				7BC1EE021815DB7A0095C90E /* Building.m in Sources */,
+				7BF1F8961818A9C500493523 /* Building+Name.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

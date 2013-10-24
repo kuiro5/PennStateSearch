@@ -6,8 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataSourceCellConfigurer.h"
 #import "Model.h"
 
-@interface jjkBuildingViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface jjkBuildingViewController : UITableViewController <DataSourceCellConfigurer>
 @property (strong,nonatomic) Model *model;
 @end

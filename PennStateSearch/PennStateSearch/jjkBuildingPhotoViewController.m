@@ -40,25 +40,33 @@
     self.zoomablePhotos = [boolNumber boolValue];
     
     
-    NSIndexPath *rowIndex = [self.delegate buildingRowSelected];;
-    NSInteger row = rowIndex.row;
+    //NSIndexPath *rowIndex = [self.delegate buildingRowSelected];
+    //NSInteger row = rowIndex.row;
     //NSString *photoName;
-    UIImage *image;
+    //UIImage *image;
     
-    if(self.showingBuildingsPhotos)
-    {
-        
-        image = [self.model photoImageAtIndex:row];
-        _imageView = [[UIImageView alloc] initWithImage:image];
-        self.navigationItem.title = [self.model photoBuildingNameAtIndex:row];
-    }
-    else
-    {
-        
-        image = [self.model imageAtIndex:row];
-        _imageView = [[UIImageView alloc] initWithImage:image];
-        self.navigationItem.title = [self.model buildingNameAtIndex:row];
-    }
+//    if(self.showingBuildingsPhotos)
+//    {
+//        NSLog(@"if");
+//        image = [self.model photoImageAtIndex:row];
+//       
+//        
+//        _imageView = [[UIImageView alloc] initWithImage:image];
+//        self.navigationItem.title = [self.model photoBuildingNameAtIndex:row];
+//    
+//    }
+//    else
+//    {
+//        NSLog(@"else");
+//        image = [self.model imageAtIndex:row];
+//       
+//        
+//        _imageView = [[UIImageView alloc] initWithImage:image];
+//        self.navigationItem.title = [self.model buildingNameAtIndex:row];
+//    }
+    
+    
+    _imageView = [[UIImageView alloc] initWithImage:self.buildingPhoto];
     
 
     //photoName = [photoName stringByAppendingString: @".jpg"];
@@ -71,9 +79,9 @@
     [self.photoScrollView addSubview:self.imageView];
     
     
-    self.photoScrollView.contentSize = image.size;
+    self.photoScrollView.contentSize = self.buildingPhoto.size;
     
-    self.photoScrollView.minimumZoomScale = self.view.bounds.size.width/ image.size.width;
+    self.photoScrollView.minimumZoomScale = self.view.bounds.size.width/ self.buildingPhoto.size.width;
     
     if(self.zoomablePhotos)
     {
@@ -82,7 +90,7 @@
     }
     else
     {
-        self.photoScrollView.maximumZoomScale = self.view.bounds.size.width/ image.size.width;
+        self.photoScrollView.maximumZoomScale = self.view.bounds.size.width/ self.buildingPhoto.size.width;
     }
     
     
