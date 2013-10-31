@@ -9,6 +9,8 @@
 #import "jjkBuildingPhotoViewController.h"
 #import "jjkConstants.h"
 #import "jjkOptionsViewController.h"
+#import "jjkBuildingInfoViewController.h"
+#import "DataManager.h"
 #import "Building.h"
 #import "DataSource.h"
 #import "MyDataManager.h"
@@ -16,6 +18,7 @@
 @interface jjkBuildingViewController () <BuildingDelegate>
 
 @property (nonatomic,assign) BOOL showingBuildingsPhotos;
+@property (nonatomic,strong) jjkBuildingInfoViewController *detailViewController;
 @property (nonatomic,strong) DataSource *dataSource;
 @property(strong,nonatomic)NSString *pictureName;
 
@@ -129,17 +132,17 @@
         {
             cell.detailTextLabel.text = @"";
         }
-        if([self.pictureName length] == 0)
-        {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.userInteractionEnabled = NO;
-        }
-        else
-        {
+       // if([self.pictureName length] == 0)
+        //{
+          //  cell.accessoryType = UITableViewCellAccessoryNone;
+            //cell.userInteractionEnabled = NO;
+        //}
+        //else
+        //{
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.userInteractionEnabled = YES;
             
-        }
+        //}
     }
 }
 
@@ -152,6 +155,8 @@
 
 - (NSIndexPath *)buildingRowSelected
 {
+    
+    
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     
@@ -162,20 +167,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"BuildingSegue"])
+    
+    
+    if ([segue.identifier isEqualToString:@"InfoSegue"])
     {
-        jjkBuildingPhotoViewController *buildingInfoViewController = segue.destinationViewController;
+        jjkBuildingInfoViewController *buildingInfoViewController = segue.destinationViewController;
+        
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Building *building = [self.dataSource objectAtIndexPath:indexPath];
+        __block Building *building = [self.dataSource objectAtIndexPath:indexPath];
         
         buildingInfoViewController.title = building.name;
         buildingInfoViewController.buildingPhoto = [[UIImage alloc] initWithData:building.photo];
-        _dataSource.delegate = self; 
+        buildingInfoViewController.infoString = building.info;
+        
+            buildingInfoViewController.completionBlock = ^(id obj){
+            NSString *newInfo = obj;
+            building.info = newInfo;
+            [[DataManager sharedInstance] saveContext];
+        };
+        
+        
+        //_dataSource.delegate = self;
         
     }
     else if([segue.identifier isEqualToString:@"OptionsSegue"])

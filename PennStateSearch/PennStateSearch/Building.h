@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * opp_bldg_code;
 @property (nonatomic, retain) NSNumber * year_constructed;
 @property (nonatomic, retain) NSString * photoName;
+@property (nonatomic, retain) NSString * info;
 @property (nonatomic, retain) NSData * photo;
 
 @end

@@ -58,6 +58,8 @@
 -(UIImage*)photoImageAtIndex:(NSInteger)index;
 -(UIImage*)imageAtIndex:(NSInteger)index;
 
+-(NSString*)infoAtIndex:(NSInteger)index;
+
 @end
 
 

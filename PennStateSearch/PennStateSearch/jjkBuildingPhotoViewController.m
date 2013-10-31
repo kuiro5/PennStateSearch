@@ -12,6 +12,7 @@
 #define minScale 0.5
 
 @interface jjkBuildingPhotoViewController ()
+- (IBAction)dismissMe:(id)sender;
 @property (weak, nonatomic) IBOutlet UIScrollView *photoScrollView;
 @property (strong,nonatomic) UIImageView *imageView;
 @property (nonatomic,assign) BOOL showingBuildingsPhotos;
@@ -75,4 +76,8 @@
     return self.imageView;
 }
 
+- (IBAction)dismissMe:(id)sender
+{
+    self.completionBlock(nil);
+}
 @end

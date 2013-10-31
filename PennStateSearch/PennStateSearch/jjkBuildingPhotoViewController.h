@@ -19,5 +19,6 @@
 @property (strong,nonatomic) Model *model;
 @property (retain,nonatomic) id<BuildingDelegate> delegate;
 @property (retain,nonatomic) UIImage *buildingPhoto;
-
+@property (nonatomic,copy) CompletionBlock completionBlock;
+//@property(nonatomic,copy) void (^CompletionBlock)(void);
 @end

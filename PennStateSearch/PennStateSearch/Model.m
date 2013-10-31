@@ -249,6 +249,14 @@ static NSString * const filename = @"buildings";
     return photoName;
 }
 
+-(NSString*)infoAtIndex:(NSInteger)index
+{
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    NSString *info = building.info;
+    
+    return info;
+}
+
 -(UIImage*)imageAtIndex:(NSInteger)index
 {
     Building *building = [self.buildingsInformation objectAtIndex:index];

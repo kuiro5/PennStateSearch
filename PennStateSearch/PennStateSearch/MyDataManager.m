@@ -33,6 +33,7 @@
         building.latitude = [dictionary objectForKey:@"latitude"];
         building.longitude = [dictionary objectForKey:@"longitude"];
         building.opp_bldg_code = [dictionary objectForKey:@"opp_bldg_code"];
+        building.info = @"Please add any useful information about this building";
         building.year_constructed = [dictionary objectForKey:@"year_constructed"];
         
         NSString *photo = [dictionary objectForKey:@"photo"];

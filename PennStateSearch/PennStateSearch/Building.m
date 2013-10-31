@@ -16,5 +16,5 @@
 @dynamic year_constructed;
 @dynamic photoName;
 @dynamic photo;
-
+@dynamic info;
 @end

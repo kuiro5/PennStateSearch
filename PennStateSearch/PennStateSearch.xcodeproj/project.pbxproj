@@ -68,6 +68,7 @@
 		7B9E562C180F32BA0082955D /* jjkBuildingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9E562B180F32BA0082955D /* jjkBuildingInfo.m */; };
 		7BA2A42B18061B00004B938A /* jjkDetailedInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2A42A18061B00004B938A /* jjkDetailedInfoViewController.m */; };
 		7BA2A44218063E6A004B938A /* jjkBuildingPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA2A44118063E6A004B938A /* jjkBuildingPhotoViewController.m */; };
+		7BB90F0F181F1240001C28B5 /* jjkBuildingInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB90F0E181F1240001C28B5 /* jjkBuildingInfoViewController.m */; };
 		7BC1EDD51815CD680095C90E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC1EDD21815CD370095C90E /* CoreData.framework */; };
 		7BC1EDF91815D8260095C90E /* Buildings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDF71815D8260095C90E /* Buildings.xcdatamodeld */; };
 		7BC1EDFF1815D9950095C90E /* MyDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC1EDFE1815D9950095C90E /* MyDataManager.m */; };
@@ -160,6 +161,8 @@
 		7BA2A42A18061B00004B938A /* jjkDetailedInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = jjkDetailedInfoViewController.m; path = ../jjkDetailedInfoViewController.m; sourceTree = "<group>"; };
 		7BA2A44018063E6A004B938A /* jjkBuildingPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjkBuildingPhotoViewController.h; sourceTree = "<group>"; };
 		7BA2A44118063E6A004B938A /* jjkBuildingPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jjkBuildingPhotoViewController.m; sourceTree = "<group>"; };
+		7BB90F0D181F1240001C28B5 /* jjkBuildingInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjkBuildingInfoViewController.h; sourceTree = "<group>"; };
+		7BB90F0E181F1240001C28B5 /* jjkBuildingInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jjkBuildingInfoViewController.m; sourceTree = "<group>"; };
 		7BC1EDD21815CD370095C90E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7BC1EDD61815CE0A0095C90E /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		7BC1EDD71815CE0A0095C90E /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
@@ -343,6 +346,8 @@
 				7BA2A42A18061B00004B938A /* jjkDetailedInfoViewController.m */,
 				7B9E5617180DCF1C0082955D /* jjkOptionsViewController.h */,
 				7B9E5618180DCF1C0082955D /* jjkOptionsViewController.m */,
+				7BB90F0D181F1240001C28B5 /* jjkBuildingInfoViewController.h */,
+				7BB90F0E181F1240001C28B5 /* jjkBuildingInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				7B04EFB417FC4729006087EB /* jjkViewController.m in Sources */,
 				7B04EFBC17FC48D9006087EB /* jjkTableViewController.m in Sources */,
 				7B04EFBF17FC48F1006087EB /* Model.m in Sources */,
+				7BB90F0F181F1240001C28B5 /* jjkBuildingInfoViewController.m in Sources */,
 				7B04EFE017FC624B006087EB /* RHLDAPSearch.m in Sources */,
 				7B8CFAF3180383D5004365AB /* jjkBuildingViewController.m in Sources */,
 				7BA2A42B18061B00004B938A /* jjkDetailedInfoViewController.m in Sources */,
