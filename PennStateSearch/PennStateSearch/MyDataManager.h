@@ -9,5 +9,5 @@
 #import "DataManagerDelegate.h"
 
 @interface MyDataManager : NSObject <DataManagerDelegate>
-
+-(void)addBuilding:(NSDictionary*)dictionary;
 @end

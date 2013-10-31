@@ -53,4 +53,27 @@
     [dataManager saveContext];
 }
 
+-(void)addBuilding:(NSDictionary*)dictionary
+{
+    DataManager *dataManager = [DataManager sharedInstance];
+    NSManagedObjectContext *managedObjectContext = dataManager.managedObjectContext;
+    
+    Building *building = [NSEntityDescription insertNewObjectForEntityForName:@"Building" inManagedObjectContext:managedObjectContext];
+    
+    building.name = [dictionary objectForKey:@"name"];
+    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber * myNumber;
+    
+    NSString *temp = [dictionary objectForKey:@"year_constructed"];
+    if(![temp isEqualToString:@""])
+    {
+        myNumber  = [f numberFromString:temp];
+        building.year_constructed = myNumber;
+    }
+
+    [dataManager saveContext];
+}
+
 @end

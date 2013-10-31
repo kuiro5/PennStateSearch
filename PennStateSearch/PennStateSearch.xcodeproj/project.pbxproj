@@ -30,6 +30,7 @@
 		7B1E784F1807771D008F343A /* psuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E784E1807771D008F343A /* psuicon.png */; };
 		7B1E785018077A57008F343A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E784418077533008F343A /* Default-568h@2x.png */; };
 		7B1E785118077A5E008F343A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E784618077537008F343A /* Default@2x.png */; };
+		7B6592A31821DF4700025CAE /* jjkAddBuildingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6592A21821DF4700025CAE /* jjkAddBuildingViewController.m */; };
 		7B8CFAC6180377E5004365AB /* agadmin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B8CFAA6180377E5004365AB /* agadmin.jpg */; };
 		7B8CFAC7180377E5004365AB /* ageng.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B8CFAA7180377E5004365AB /* ageng.jpg */; };
 		7B8CFAC8180377E5004365AB /* appliedscience.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B8CFAA8180377E5004365AB /* appliedscience.jpg */; };
@@ -117,6 +118,8 @@
 		7B1E784618077537008F343A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		7B1E7848180775BD008F343A /* tabbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbutton.png; sourceTree = "<group>"; };
 		7B1E784E1807771D008F343A /* psuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = psuicon.png; path = ../psuicon.png; sourceTree = "<group>"; };
+		7B6592A11821DF4700025CAE /* jjkAddBuildingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jjkAddBuildingViewController.h; sourceTree = "<group>"; };
+		7B6592A21821DF4700025CAE /* jjkAddBuildingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jjkAddBuildingViewController.m; sourceTree = "<group>"; };
 		7B8CFAA6180377E5004365AB /* agadmin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = agadmin.jpg; sourceTree = "<group>"; };
 		7B8CFAA7180377E5004365AB /* ageng.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ageng.jpg; sourceTree = "<group>"; };
 		7B8CFAA8180377E5004365AB /* appliedscience.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appliedscience.jpg; sourceTree = "<group>"; };
@@ -348,6 +351,8 @@
 				7B9E5618180DCF1C0082955D /* jjkOptionsViewController.m */,
 				7BB90F0D181F1240001C28B5 /* jjkBuildingInfoViewController.h */,
 				7BB90F0E181F1240001C28B5 /* jjkBuildingInfoViewController.m */,
+				7B6592A11821DF4700025CAE /* jjkAddBuildingViewController.h */,
+				7B6592A21821DF4700025CAE /* jjkAddBuildingViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 			files = (
 				7BC1EE091815E1AF0095C90E /* DataSource.m in Sources */,
 				7BC1EE071815E1A50095C90E /* DataManager.m in Sources */,
+				7B6592A31821DF4700025CAE /* jjkAddBuildingViewController.m in Sources */,
 				7B04EFA417FC4728006087EB /* main.m in Sources */,
 				7B04EFA817FC4728006087EB /* jjkAppDelegate.m in Sources */,
 				7B04EFB417FC4729006087EB /* jjkViewController.m in Sources */,
