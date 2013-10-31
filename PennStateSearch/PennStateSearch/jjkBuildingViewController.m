@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 8
-// Date: October 24, 2013
+// Program: Assignment 9
+// Date: October 31, 2013
 //
 
 #import "jjkBuildingViewController.h"
@@ -25,9 +25,6 @@
 @property(strong,nonatomic)NSString *pictureName;
 @property (nonatomic,strong) MyDataManager *myDataManager;
 
-//search Bar info for Search Display Controller
-@property (nonatomic,strong) NSString *searchString;
-@property NSInteger searchOption;
 @end
  
 @implementation jjkBuildingViewController 
@@ -36,7 +33,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-   // NSLog(@"InitWithCoder");
+
     if (self)
     {
         _myDataManager = [[MyDataManager alloc] init];
@@ -62,11 +59,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //NSLog(@"ViewDidLoad");
     
     self.pictureName = @"";
     self.tableView.dataSource = self.dataSource;
-    //self.dataSource.tableView = self.tableView;
+    self.dataSource.tableView = self.tableView;
     
     self.navigationItem.rightBarButtonItems = @[self.navigationItem.rightBarButtonItem, self.editButtonItem];
     
@@ -86,9 +82,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //NSLog(@"ViewWillAppear");
-    //self.dataSource.tableView = self.tableView;
-    [self.tableView reloadData];
     
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSNumber *boolNumber = [preferences objectForKey:buildingsWithPhotos];
@@ -158,17 +151,10 @@
         {
             cell.detailTextLabel.text = @"";
         }
-       // if([self.pictureName length] == 0)
-        //{
-          //  cell.accessoryType = UITableViewCellAccessoryNone;
-            //cell.userInteractionEnabled = NO;
-        //}
-        //else
-        //{
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.userInteractionEnabled = YES;
-            
-        //}
+
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.userInteractionEnabled = YES;
+        
     }
 }
 
@@ -218,6 +204,7 @@
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -240,10 +227,6 @@
             building.info = newInfo;
             [[DataManager sharedInstance] saveContext];
         };
-        
-        
-        //_dataSource.delegate = self;
-        
     }
     else if([segue.identifier isEqualToString:@"OptionsSegue"])
     {
@@ -260,74 +243,10 @@
             
             NSDictionary *dictionary = obj;
             [self.myDataManager addBuilding:dictionary];
-            //[self.tableView reloadData];
-            //self.dataSource.tableView = self.tableView;
         }
     };
 }
 
-}
-
-#pragma mark - Search Display Controller Delegate Methods
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
-shouldReloadTableForSearchString:(NSString *)searchString
-{
-    // remember the current search string and filter the search results
-    self.searchString = searchString;
-    [self filterSearch];
-    
-    return YES;
-}
-
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-    // remember the current search option and filter the search results
-    self.searchOption = searchOption;
-    [self filterSearch];
-    return YES;
-}
-
-// construct the appropriate predicate based on the search string and search option (scope)
-// then update data source using predicate
--(void)filterSearch {
-    
-    NSString *searchPredicateString;
-    if (self.searchString.length>0) {
-        searchPredicateString = [NSString stringWithFormat:@"name contains '%@'", self.searchString];
-    } else {
-        searchPredicateString = @"name contains ''";
-    }
-    
-    NSString *search;
-    switch (self.searchOption) {
-        case 0:
-            search = searchPredicateString;
-            break;
-        case 1:
-            search = [NSString stringWithFormat:@"%@ && !(name contains ' ')", searchPredicateString];
-            break;
-        default:
-            search = [NSString stringWithFormat:@"%@ && (name contains ' ')", searchPredicateString];
-            break;
-    }
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:search];
-    [self.dataSource updateWithPredicate:predicate];
-    
-}
-
-// when we begin searching we switch tableViews
--(void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller {
-    self.dataSource.tableView = controller.searchResultsTableView;
-}
-
-// when we end searching we switch tableViews back to default
--(void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller {
-    self.dataSource.tableView = self.tableView;
-}
-
-#pragma mark - Search Bar Delegate
--(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    [self.dataSource updateWithPredicate:nil];
-    [self.tableView reloadData];
 }
 
 @end

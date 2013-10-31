@@ -47,7 +47,7 @@ dataManagerDelegate:(id<DataManagerDelegate>)dataManagerDelegate {
         self.fetchRequest.predicate = predicate;
         
         //cache name
-        NSString *cacheName = [NSString stringWithFormat:@"%@.cache", [dataManagerDelegate xcDataModelName]];
+       // NSString *cacheName = [NSString stringWithFormat:@"%@.cache", [dataManagerDelegate xcDataModelName]];
         
         // create the Fetched Results Controller
         NSManagedObjectContext *context = [dataManager managedObjectContext];
@@ -55,7 +55,8 @@ dataManagerDelegate:(id<DataManagerDelegate>)dataManagerDelegate {
                                          initWithFetchRequest:self.fetchRequest
                                          managedObjectContext:context
                                          sectionNameKeyPath:keyPath
-                                         cacheName:cacheName];
+                                         cacheName:nil];
+                                         //cacheName:cacheName];
         
         // Perform the fetch.  Just in case, check for errors
         NSError *error;
