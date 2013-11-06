@@ -312,7 +312,6 @@
                                 </view>
                                 <connections>
                                     <segue destination="9s5-HR-7ju" kind="push" identifier="InfoSegue" id="O7O-W5-Dfv"/>
-                                    <segue destination="Z6J-3n-m5l" kind="push" identifier="MapSegue" trigger="accessoryAction" id="6Be-z2-IUd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -333,6 +332,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Z6J-3n-m5l" kind="push" identifier="MapSegue" id="uYa-Y1-f4g"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Au5-T7-80s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

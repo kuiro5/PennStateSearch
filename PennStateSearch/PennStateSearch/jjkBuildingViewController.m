@@ -25,6 +25,7 @@
 @property (nonatomic,strong) DataSource *dataSource;
 @property(strong,nonatomic)NSString *pictureName;
 @property (nonatomic,strong) MyDataManager *myDataManager;
+@property (strong, nonatomic) NSIndexPath *mapPath;
 
 @end
  
@@ -219,6 +220,14 @@
     
 }
 
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    self.mapPath = indexPath;
+
+    [self performSegueWithIdentifier:@"MapSegue" sender:self];
+}
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
@@ -263,15 +272,13 @@
      
         
         jjkMapViewController *mapViewController = segue.destinationViewController;
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
-        Building *building = [self.dataSource objectAtIndexPath:indexPath];
+        Building *building = [self.dataSource objectAtIndexPath:self.mapPath];
       
         
-        
-        
-        //  mapViewController.mapCenter =[self.model buildlingCenterForIndex:indexPath.row];
-    CLLocationCoordinate2DMake([building.longitude doubleValue], [building.latitude doubleValue]);
+          mapViewController.mapCenter = CLLocationCoordinate2DMake([building.longitude doubleValue], [building.latitude doubleValue]);
+        // =[self.model buildlingCenterForIndex:indexPath.row];
 
     }
 }

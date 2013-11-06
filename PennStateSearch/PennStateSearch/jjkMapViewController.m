@@ -29,7 +29,7 @@
 {
     
     
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapCenter, 750000, 750000);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapCenter, 1000, 1000);
     [self.mapView setRegion:region];
     
     [self.mapView removeAnnotations:[self.mapView annotations]];
