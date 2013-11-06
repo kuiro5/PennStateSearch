@@ -15,6 +15,7 @@
 #import "DataSource.h"
 #import "MyDataManager.h"
 #import "jjkAddBuildingViewController.h"
+#import "jjkMapViewController.h"
 
 @interface jjkBuildingViewController () <BuildingDelegate>
 @property (strong, nonatomic) IBOutlet UISearchDisplayController *searchBar;
@@ -114,12 +115,13 @@
 -(void)configureCell:(UITableViewCell *)cell withObject:(id)object
 {
     Building *building = object;
-    
+   // CLLocationCoordinate2D *location;
     
     if(self.showingBuildingsPhotos)
     {
         cell.textLabel.text = building.name;
         NSString *tempString = [NSString stringWithFormat:@"%@", building.year_constructed];
+        
      
         if(![tempString isEqualToString: @"0"])                     // display year_constructed if it exists
         {
@@ -130,9 +132,7 @@
             cell.detailTextLabel.text = @"";
         }
         
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.userInteractionEnabled = YES;
-        
+       
         
     }
     else if(!self.showingBuildingsPhotos)
@@ -152,9 +152,21 @@
             cell.detailTextLabel.text = @"";
         }
 
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.userInteractionEnabled = YES;
         
+        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        //cell.userInteractionEnabled = YES;
+        
+    }
+    
+    if(building.latitude == nil && building.longitude == nil)
+    {
+        cell.accessoryType = nil;
+        cell.userInteractionEnabled = NO;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.userInteractionEnabled = YES;
     }
 }
 
@@ -246,7 +258,22 @@
         }
     };
 }
+    else if ([segue.identifier isEqualToString:@"MapSegue"])
+    {
+     
+        
+        jjkMapViewController *mapViewController = segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        Building *building = [self.dataSource objectAtIndexPath:indexPath];
+      
+        
+        
+        
+        //  mapViewController.mapCenter =[self.model buildlingCenterForIndex:indexPath.row];
+    CLLocationCoordinate2DMake([building.longitude doubleValue], [building.latitude doubleValue]);
 
+    }
 }
 
 @end

@@ -300,6 +300,20 @@ static NSString * const filename = @"buildings";
     }
 }
 
+- (CLLocationCoordinate2D) buildlingCenterForIndex:(NSInteger)index {
+    NSDictionary *dictionary = [self.buildingsInformation objectAtIndex:index];
+    NSNumber * lat = [dictionary objectForKey:@"latitude"];
+    NSNumber * lon = [dictionary objectForKey:@"longitude"];
+    return CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue]);
+}
+
+- (CLLocationCoordinate2D) photoBuildingCenterForIndex:(NSInteger)index {
+    NSDictionary *dictionary = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSNumber * lat = [dictionary objectForKey:@"latitude"];
+    NSNumber * lon = [dictionary objectForKey:@"longitude"];
+    return CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue]);
+}
+
 -(NSString*)photoBuildingNameAtIndex:(NSInteger)index
 {
     Building *building = [self.sortedBuildingWithPhotos objectAtIndex:index];

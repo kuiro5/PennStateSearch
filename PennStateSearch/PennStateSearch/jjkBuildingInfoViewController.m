@@ -11,7 +11,10 @@
 @interface jjkBuildingInfoViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
+//@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *photoButton;
+
+//@property (nonatomic, strong) CLGeocoder * geocoder;
 
 @end
 
@@ -24,6 +27,11 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void) updateMapView
+{
+    
 }
 
 - (void)viewDidLoad

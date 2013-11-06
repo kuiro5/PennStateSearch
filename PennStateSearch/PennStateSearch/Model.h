@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface Model : NSObject
 
@@ -59,6 +60,9 @@
 -(UIImage*)imageAtIndex:(NSInteger)index;
 
 -(NSString*)infoAtIndex:(NSInteger)index;
+
+- (CLLocationCoordinate2D) buildlingCenterForIndex:(NSInteger)index;
+- (CLLocationCoordinate2D) photoBuildingCenterForIndex:(NSInteger)index;
 
 @end
 

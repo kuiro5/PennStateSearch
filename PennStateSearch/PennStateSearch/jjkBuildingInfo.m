@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSNumber *oppCode;
 @property (nonatomic, strong) NSString *photoName;
 @property (nonatomic, strong) UIImage *image;
+
 @end
 
 @implementation jjkBuildingInfo

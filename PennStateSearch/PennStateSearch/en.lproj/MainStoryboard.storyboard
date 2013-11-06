@@ -40,6 +40,41 @@
             </objects>
             <point key="canvasLocation" x="461" y="-441"/>
         </scene>
+        <!--Jjk Map View Controller-->
+        <scene sceneID="6Kg-Fa-446">
+            <objects>
+                <viewController id="Z6J-3n-m5l" customClass="jjkMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lIb-1e-cNw">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Meu-mS-N1O">
+                                <rect key="frame" x="10" y="-70" width="300" height="505"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Mpk-OO-R5j"/>
+                                    <constraint firstAttribute="height" constant="505" id="aYK-Go-2Pf"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="Z6J-3n-m5l" id="NGi-rZ-xVI"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Meu-mS-N1O" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="3Jo-zX-fzi"/>
+                            <constraint firstItem="Meu-mS-N1O" firstAttribute="centerX" secondItem="lIb-1e-cNw" secondAttribute="centerX" type="default" id="V8g-cW-wwH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3qS-Jc-5ss"/>
+                    <connections>
+                        <outlet property="mapView" destination="Meu-mS-N1O" id="w7e-2J-RVZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ueg-G1-WKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="426" y="211"/>
+        </scene>
         <!--Jjk Add Building View Controller-->
         <scene sceneID="ZLg-7A-A0N">
             <objects>
@@ -253,11 +288,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BuildingCell" textLabel="0kA-bm-QhZ" detailTextLabel="wyF-Ua-bZ6" rowHeight="77" style="IBUITableViewCellStyleSubtitle" id="PAR-mb-e7v">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BuildingCell" textLabel="0kA-bm-QhZ" detailTextLabel="wyF-Ua-bZ6" rowHeight="77" style="IBUITableViewCellStyleSubtitle" id="PAR-mb-e7v">
                                 <rect key="frame" x="0.0" y="22" width="320" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="76"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="76"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kA-bm-QhZ">
@@ -277,6 +312,7 @@
                                 </view>
                                 <connections>
                                     <segue destination="9s5-HR-7ju" kind="push" identifier="InfoSegue" id="O7O-W5-Dfv"/>
+                                    <segue destination="Z6J-3n-m5l" kind="push" identifier="MapSegue" trigger="accessoryAction" id="6Be-z2-IUd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -322,9 +358,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5Ut-Hy-202" firstAttribute="top" secondItem="r0L-Az-gXm" secondAttribute="top" type="default" id="0qa-7k-UiZ"/>
-                            <constraint firstAttribute="bottom" secondItem="5Ut-Hy-202" secondAttribute="bottom" type="default" id="2l6-eU-v8k"/>
-                            <constraint firstAttribute="trailing" secondItem="5Ut-Hy-202" secondAttribute="trailing" type="default" id="PMC-YN-OCh"/>
+                            <constraint firstAttribute="bottom" secondItem="5Ut-Hy-202" secondAttribute="bottom" type="default" id="BkD-LX-3l4"/>
                             <constraint firstItem="5Ut-Hy-202" firstAttribute="leading" secondItem="r0L-Az-gXm" secondAttribute="leading" type="default" id="SIj-0k-Ikp"/>
+                            <constraint firstAttribute="trailing" secondItem="5Ut-Hy-202" secondAttribute="trailing" type="default" id="ydz-Li-ei8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SCt-TK-uVI">
