@@ -626,7 +626,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PennStateSearch/PennStateSearch-Prefix.pch";
 				INFOPLIST_FILE = "PennStateSearch/PennStateSearch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/PennStateSearch/ldap/lib\"",
@@ -643,7 +643,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PennStateSearch/PennStateSearch-Prefix.pch";
 				INFOPLIST_FILE = "PennStateSearch/PennStateSearch-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/PennStateSearch/ldap/lib\"",

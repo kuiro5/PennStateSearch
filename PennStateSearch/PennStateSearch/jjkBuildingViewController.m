@@ -277,7 +277,9 @@
         Building *building = [self.dataSource objectAtIndexPath:self.mapPath];
       
         
-          mapViewController.mapCenter = CLLocationCoordinate2DMake([building.longitude doubleValue], [building.latitude doubleValue]);
+          mapViewController.mapCenter = CLLocationCoordinate2DMake([building.latitude doubleValue], [building.longitude doubleValue]);
+        mapViewController.buildingName = building.name;
+        mapViewController.buildingPhoto = [[UIImage alloc] initWithData:building.photo];
         // =[self.model buildlingCenterForIndex:indexPath.row];
 
     }

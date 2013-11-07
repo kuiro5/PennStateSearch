@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="DtJ-SE-jcr">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
@@ -49,11 +49,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Meu-mS-N1O">
-                                <rect key="frame" x="10" y="-70" width="300" height="505"/>
+                                <rect key="frame" x="10" y="-70" width="310" height="525"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Mpk-OO-R5j"/>
-                                    <constraint firstAttribute="height" constant="505" id="aYK-Go-2Pf"/>
+                                    <constraint firstAttribute="height" constant="525" id="2oU-A8-MHk"/>
+                                    <constraint firstAttribute="width" constant="310" id="X7k-JW-wQG"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="Z6J-3n-m5l" id="NGi-rZ-xVI"/>
@@ -62,13 +62,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Meu-mS-N1O" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="3Jo-zX-fzi"/>
-                            <constraint firstItem="Meu-mS-N1O" firstAttribute="centerX" secondItem="lIb-1e-cNw" secondAttribute="centerX" type="default" id="V8g-cW-wwH"/>
+                            <constraint firstAttribute="trailing" secondItem="Meu-mS-N1O" secondAttribute="trailing" type="default" id="N9e-bP-bxV"/>
+                            <constraint firstAttribute="bottom" secondItem="Meu-mS-N1O" secondAttribute="bottom" type="default" id="Wr6-ZO-uKg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3qS-Jc-5ss"/>
                     <connections>
                         <outlet property="mapView" destination="Meu-mS-N1O" id="w7e-2J-RVZ"/>
+                        <segue destination="VkD-bU-3kA" kind="modal" identifier="PhotoSegue" id="7Tf-MQ-mQE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ueg-G1-WKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -424,6 +425,7 @@
                             <constraint firstItem="e6f-9o-XYn" firstAttribute="top" secondItem="eQQ-aG-p1C" secondAttribute="top" type="default" id="vQw-qE-goM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gPt-T8-ZXM"/>
                     <connections>
                         <outlet property="photoScrollView" destination="e6f-9o-XYn" id="zkI-b3-ffs"/>
                     </connections>
@@ -812,4 +814,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Tf-MQ-mQE"/>
+    </inferredMetricsTieBreakers>
 </document>

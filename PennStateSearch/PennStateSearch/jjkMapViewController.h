@@ -16,5 +16,8 @@
 @interface jjkMapViewController : UIViewController<MKMapViewDelegate>
 
 @property CLLocationCoordinate2D mapCenter;
+@property (strong, nonatomic) NSString *buildingName;
+@property (strong, nonatomic) UIImage *buildingPhoto;
+@property (nonatomic,copy) CompletionBlock completionBlock;
 - (void) updateMapView;
 @end
