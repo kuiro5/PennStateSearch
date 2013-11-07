@@ -1,13 +1,16 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 5
-// Date: October 4, 2013
+// Program: Assignment 10
+// Date: November 7, 2013
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface Model : NSObject
+
++(id)sharedInstance;
 
 @property(strong,nonatomic)NSString* firstName;
 @property(strong,nonatomic)NSString* lastName;
@@ -27,6 +30,39 @@
 -(NSArray*)searchResults;
 -(NSString *)nameAtIndex:(NSInteger)index;
 -(NSString*)addressAtIndex:(NSInteger)index;
+
+-(NSInteger)numberOfBuildings;
+-(NSInteger)numberOfBuildingsWithPhotos;;
+
+-(void)displayBuildings;
+-(NSArray*)sortArray;
+
+-(NSString*)buildingOppCodeAtIndex:(NSInteger)index;
+-(NSString*)buildingNameAtIndex:(NSInteger)index;
+
+-(NSString*)affiliationAtIndex:(NSInteger)index;
+-(NSString*)emailAtIndex:(NSInteger)index;
+-(NSString*)mobileAtIndex:(NSInteger)index;
+-(NSString*)campusAtIndex:(NSInteger)index;
+-(NSString*)majorAtIndex:(NSInteger)index;
+
+-(NSString*)buildingPictureAtIndex:(NSInteger)index;
+
+-(void)clearResults;
+
+-(void)createBuildingsPhotoArray;
+
+-(NSString*)photoBuildingNameAtIndex:(NSInteger)index;
+-(NSString*)photoBuildingPictureAtIndex:(NSInteger)index;
+-(NSString*)photoBuildingOppCodeAtIndex:(NSInteger)index;
+
+-(UIImage*)photoImageAtIndex:(NSInteger)index;
+-(UIImage*)imageAtIndex:(NSInteger)index;
+
+-(NSString*)infoAtIndex:(NSInteger)index;
+
+- (CLLocationCoordinate2D) buildlingCenterForIndex:(NSInteger)index;
+- (CLLocationCoordinate2D) photoBuildingCenterForIndex:(NSInteger)index;
 
 @end
 
