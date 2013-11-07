@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 9
-// Date: October 31, 2013
+// Program: Assignment 10
+// Date: November 7, 2013
 //
 
 #import "jjkBuildingInfoViewController.h"
@@ -10,11 +10,8 @@
 
 @interface jjkBuildingInfoViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-
-//@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *photoButton;
 
-//@property (nonatomic, strong) CLGeocoder * geocoder;
 
 @end
 
@@ -90,6 +87,7 @@
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
+    
     if (!self.editing) {
         [self.textView resignFirstResponder];
     } else {

@@ -1,17 +1,16 @@
 //
-//  jjkMapViewController.m
-//  PennStateSearch
-//
-//  Created by Joshua Kuiros on 11/5/13.
-//  Copyright (c) 2013 Joshua Kuiros. All rights reserved.
+// Name:    Joshua Kuiros
+// Section: CMPSC 475
+// Program: Assignment 10
+// Date: November 7, 2013
 //
 
 #import "jjkMapViewController.h"
 #import "jjkBuildingPhotoViewController.h"
 
 @interface jjkMapViewController ()
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property(strong, nonatomic) CLGeocoder *geocoder;
 
 @end
 
@@ -33,7 +32,6 @@
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.mapCenter, 800, 800);
     [self.mapView setRegion:region];
     
-    //[self.mapView removeAnnotations:[self.mapView annotations]];
     
     MKPointAnnotation * building = [[MKPointAnnotation alloc] init];
     [building setCoordinate:self.mapCenter];
@@ -43,43 +41,12 @@
 }
 
 
-- (void) geocodeInfo {
-    CLGeocoder * geocoder1 = [[CLGeocoder alloc] init];
-  //  CLGeocoder * geocoder2 = [[CLGeocoder alloc] init];
-    
-    NSMutableDictionary * stateAddressDict = [[NSMutableDictionary alloc] init];
-    [stateAddressDict setValue:self.title
-                        forKey:[NSString stringWithFormat:@"%@", kABPersonAddressStateKey]];
-    
-    [geocoder1 geocodeAddressDictionary:stateAddressDict
-                      completionHandler:^(NSArray * placemarks, NSError * error) {
-                          if (placemarks) {
-                              CLPlacemark * place = (CLPlacemark *)[placemarks objectAtIndex:0];
-                              [self setMapCenter:place.location.coordinate];
-                              [self updateMapView];
-                              
-                          }
-                      }];
-}
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
    
     MKPinAnnotationView *annView=[[MKPinAnnotationView alloc]
                                   initWithAnnotation:annotation
                                   reuseIdentifier:@"currentloc"];
-    
-//    
-//    UIButton *myDetailButton = [UIButton
-//                                buttonWithType:UIButtonTypeDetailDisclosure];
-//    myDetailButton.frame = CGRectMake(0, 0, 23, 23);
-//    myDetailButton.contentVerticalAlignment =
-//    UIControlContentVerticalAlignmentCenter;
-//    myDetailButton.contentHorizontalAlignment =
-//    UIControlContentHorizontalAlignmentCenter;
-//    
-//    [myDetailButton addTarget:self
-//                       action:nil
-//             forControlEvents:UIControlEventTouchUpInside];
     
     CGImageRef cgref = [self.buildingPhoto CGImage];
     CIImage *cim = [self.buildingPhoto CIImage];
@@ -101,7 +68,6 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control
 {
-   // NSLog(@"accessory button tapped for annotation %@", view.annotation);
     [self performSegueWithIdentifier:@"PhotoSegue" sender:self];
 }
 

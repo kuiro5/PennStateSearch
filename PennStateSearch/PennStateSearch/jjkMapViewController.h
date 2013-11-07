@@ -1,9 +1,8 @@
 //
-//  jjkMapViewController.h
-//  PennStateSearch
-//
-//  Created by Joshua Kuiros on 11/5/13.
-//  Copyright (c) 2013 Joshua Kuiros. All rights reserved.
+// Name:    Joshua Kuiros
+// Section: CMPSC 475
+// Program: Assignment 10
+// Date: November 7, 2013
 //
 
 #import <UIKit/UIKit.h>

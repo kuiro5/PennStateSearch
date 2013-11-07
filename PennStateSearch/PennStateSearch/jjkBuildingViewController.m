@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 9
-// Date: October 31, 2013
+// Program: Assignment 10
+// Date: November 7, 2013
 //
 
 #import "jjkBuildingViewController.h"
@@ -152,17 +152,13 @@
         {
             cell.detailTextLabel.text = @"";
         }
-
-        
-        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        //cell.userInteractionEnabled = YES;
-        
     }
     
-    if(building.latitude == nil && building.longitude == nil)
+    double temp = 0.0;
+    
+    if((building.latitude == nil && building.longitude == nil) || ([building.latitude doubleValue] == temp && [building.longitude doubleValue] == temp))
     {
         cell.accessoryType = nil;
-        cell.userInteractionEnabled = NO;
     }
     else
     {
@@ -272,7 +268,6 @@
      
         
         jjkMapViewController *mapViewController = segue.destinationViewController;
-        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
         Building *building = [self.dataSource objectAtIndexPath:self.mapPath];
       
@@ -280,7 +275,7 @@
           mapViewController.mapCenter = CLLocationCoordinate2DMake([building.latitude doubleValue], [building.longitude doubleValue]);
         mapViewController.buildingName = building.name;
         mapViewController.buildingPhoto = [[UIImage alloc] initWithData:building.photo];
-        // =[self.model buildlingCenterForIndex:indexPath.row];
+
 
     }
 }
