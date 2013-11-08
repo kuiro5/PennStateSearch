@@ -1,11 +1,12 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 7
-// Date: October 17, 2013
+// Program: Assignment 9
+// Date: October 31, 2013
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface Model : NSObject
 
@@ -54,6 +55,14 @@
 -(NSString*)photoBuildingNameAtIndex:(NSInteger)index;
 -(NSString*)photoBuildingPictureAtIndex:(NSInteger)index;
 -(NSString*)photoBuildingOppCodeAtIndex:(NSInteger)index;
+
+-(UIImage*)photoImageAtIndex:(NSInteger)index;
+-(UIImage*)imageAtIndex:(NSInteger)index;
+
+-(NSString*)infoAtIndex:(NSInteger)index;
+
+- (CLLocationCoordinate2D) buildlingCenterForIndex:(NSInteger)index;
+- (CLLocationCoordinate2D) photoBuildingCenterForIndex:(NSInteger)index;
 
 @end
 

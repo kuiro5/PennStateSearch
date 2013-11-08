@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 7
-// Date: October 17, 2013
+// Program: Assignment 9
+// Date: October 31, 2013
 //
 
 #import "jjkBuildingPhotoViewController.h"
@@ -12,6 +12,7 @@
 #define minScale 0.5
 
 @interface jjkBuildingPhotoViewController ()
+- (IBAction)dismissMe:(id)sender;
 @property (weak, nonatomic) IBOutlet UIScrollView *photoScrollView;
 @property (strong,nonatomic) UIImageView *imageView;
 @property (nonatomic,assign) BOOL showingBuildingsPhotos;
@@ -39,39 +40,14 @@
     boolNumber = [preferences objectForKey:buildingsZoom];
     self.zoomablePhotos = [boolNumber boolValue];
     
-    
-    NSIndexPath *rowIndex = [self.delegate buildingRowSelected];;
-    NSInteger row = rowIndex.row;
-    NSString *photoName;
-    
-    
-    if(self.showingBuildingsPhotos)
-    {
-        
-        photoName = [self.model photoBuildingPictureAtIndex:row];
-        self.navigationItem.title = [self.model photoBuildingNameAtIndex:row];
-    }
-    else
-    {
-        
-        photoName = [self.model buildingPictureAtIndex:row];
-        self.navigationItem.title = [self.model buildingNameAtIndex:row];
-    }
-    
-
-    photoName = [photoName stringByAppendingString: @".jpg"];
-    
-    
-    UIImage *image = [UIImage imageNamed:photoName];
-    _imageView = [[UIImageView alloc] initWithImage:image];
-    
+    _imageView = [[UIImageView alloc] initWithImage:self.buildingPhoto];    
     
     [self.photoScrollView addSubview:self.imageView];
     
     
-    self.photoScrollView.contentSize = image.size;
+    self.photoScrollView.contentSize = self.buildingPhoto.size;
     
-    self.photoScrollView.minimumZoomScale = self.view.bounds.size.width/ image.size.width;
+    self.photoScrollView.minimumZoomScale = self.view.bounds.size.width/ self.buildingPhoto.size.width;
     
     if(self.zoomablePhotos)
     {
@@ -80,7 +56,7 @@
     }
     else
     {
-        self.photoScrollView.maximumZoomScale = self.view.bounds.size.width/ image.size.width;
+        self.photoScrollView.maximumZoomScale = self.view.bounds.size.width/ self.buildingPhoto.size.width;
     }
     
     
@@ -100,4 +76,8 @@
     return self.imageView;
 }
 
+- (IBAction)dismissMe:(id)sender
+{
+    self.completionBlock(nil);
+}
 @end

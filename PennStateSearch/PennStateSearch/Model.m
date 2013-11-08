@@ -1,13 +1,16 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 7
-// Date: October 17, 2013
+// Program: Assignment 9
+// Date: October 31, 2013
 //
 
 #import "Model.h"
 #import "jjkBuildingInfo.h"
 #import "RHLDAPSearch.h"
+#import "DataManager.h"
+#import "MyDataManager.h"
+#import "Building.h"
 
 static NSString * const filename = @"buildings";
 
@@ -27,7 +30,8 @@ static NSString * const filename = @"buildings";
 +(id)sharedInstance
 {
     static id singleton = nil;
-    if (!singleton) {
+    if (!singleton)
+    {
         singleton = [[self alloc] init];
     }
     return singleton;
@@ -38,60 +42,35 @@ static NSString * const filename = @"buildings";
     self = [super init];
     if(self)
     {
+        // initialization
         self.psuSearch = [[RHLDAPSearch alloc] initWithURL:@"ldap://ldap.psu.edu:389"];
         self.sortedBuildingWithPhotos = [[NSMutableArray alloc] init];
         
-        
-        if ([self fileExists])
-        {
-            NSString *path = [self filePath];
-            self.buildingsInformation = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
             
+        // coredata objects
+        DataManager *dataManager = [DataManager sharedInstance];
+        MyDataManager *myDataManager = [[MyDataManager alloc]init];
+        dataManager.delegate = myDataManager;
             
+        NSArray *sortedTempArray = [dataManager fetchManagedObjectsForEntity:@"Building" sortKeys:@[@"name"] predicate:nil];
             
-        }
-        else
-        {
-            NSBundle *bundle = [NSBundle mainBundle];
-            NSString *path = [bundle pathForResource:@"buildings" ofType:@"plist"];
-            self.temporaryBuildingArray = [NSArray arrayWithContentsOfFile:path];
-            
-            
-            NSArray *sortedTempArray = [self sortArray];
-            
-            self.temporaryBuildingArray = [(NSArray*)sortedTempArray mutableCopy];
-            
-            
-            
-            [self.temporaryBuildingArray writeToFile:[self filePath] atomically:YES];
-            
-            _buildingsInformation = [NSMutableArray array];
-            for (NSDictionary *dict in self.temporaryBuildingArray) {
-                jjkBuildingInfo *info = [[jjkBuildingInfo alloc] initWithBuilding:dict[@"name"] oppCode:dict[@"opp_bldg_code"] photo:dict[@"photo"]];
-               
-                
-                
-                [_buildingsInformation addObject:info];
-            }
-            
-            
-            [NSKeyedArchiver archiveRootObject:_buildingsInformation toFile:[self filePath]];
-        }
-        
+        _buildingsInformation = [[NSMutableArray alloc] initWithArray:sortedTempArray];
     }
     return self;
-
 }
 
--(NSString*)applicationDocumentsDirectory {
+-(NSString*)applicationDocumentsDirectory
+{
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
--(NSString *)filePath {
+-(NSString *)filePath
+{
     return [[self applicationDocumentsDirectory] stringByAppendingPathComponent:filename];
 }
 
--(BOOL)fileExists {
+-(BOOL)fileExists
+{
     NSString *path = [self filePath];
     return [[NSFileManager defaultManager] fileExistsAtPath:path];
 }
@@ -254,27 +233,50 @@ static NSString * const filename = @"buildings";
 
 }
 
-
 -(NSString*)buildingNameAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:index];
-    NSString *buildingName = info.building;
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    NSString *buildingName = building.name;
     
     return buildingName;
 }
 
 -(NSString*)buildingPictureAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:index];
-    NSString *photoName = info.photoName;
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    NSString *photoName = building.photoName;
     
     return photoName;
 }
 
+-(NSString*)infoAtIndex:(NSInteger)index
+{
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    NSString *info = building.info;
+    
+    return info;
+}
+
+-(UIImage*)imageAtIndex:(NSInteger)index
+{
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    UIImage* image = [[UIImage alloc] initWithData:building.photo];
+    
+    return image;
+}
+
+-(UIImage*)photoImageAtIndex:(NSInteger)index
+{
+    Building *building = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    UIImage* image = [[UIImage alloc] initWithData:building.photo];
+    
+    return image;
+}
+
 -(NSString*)buildingOppCodeAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:index];
-    NSNumber *buildingCode = info.oppCode;
+    Building *building = [self.buildingsInformation objectAtIndex:index];
+    NSNumber *buildingCode = building.opp_bldg_code;
     NSString *buildingCodeString = [NSString stringWithFormat:@"%@", buildingCode];
 
     
@@ -287,37 +289,51 @@ static NSString * const filename = @"buildings";
     for(int i = 0; i < [self.buildingsInformation count]; i++)
     {
         
-        jjkBuildingInfo *info = [self.buildingsInformation objectAtIndex:i];
-        NSString *tempPhotoName = info.photoName;
+        Building *building = [self.buildingsInformation objectAtIndex:i];
+        NSString *tempPhotoName = building.photoName;
         
         if([tempPhotoName length] != 0)
         {
-            [self.sortedBuildingWithPhotos addObject:info];
+            [self.sortedBuildingWithPhotos addObject:building];
             
         }
     }
 }
 
+- (CLLocationCoordinate2D) buildlingCenterForIndex:(NSInteger)index {
+    NSDictionary *dictionary = [self.buildingsInformation objectAtIndex:index];
+    NSNumber * lat = [dictionary objectForKey:@"latitude"];
+    NSNumber * lon = [dictionary objectForKey:@"longitude"];
+    return CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue]);
+}
+
+- (CLLocationCoordinate2D) photoBuildingCenterForIndex:(NSInteger)index {
+    NSDictionary *dictionary = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSNumber * lat = [dictionary objectForKey:@"latitude"];
+    NSNumber * lon = [dictionary objectForKey:@"longitude"];
+    return CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue]);
+}
+
 -(NSString*)photoBuildingNameAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.sortedBuildingWithPhotos objectAtIndex:index];
-    NSString *buildingName = info.building;
+    Building *building = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSString *buildingName = building.name;
     
     return buildingName;
 }
 
 -(NSString*)photoBuildingPictureAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info = [self.sortedBuildingWithPhotos objectAtIndex:index];
-    NSString *photoName = info.photoName;
+    Building *building = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSString *photoName = building.name;
     
     return photoName;
 }
 
 -(NSString*)photoBuildingOppCodeAtIndex:(NSInteger)index
 {
-    jjkBuildingInfo *info  = [self.sortedBuildingWithPhotos objectAtIndex:index];
-    NSNumber *buildingCode = info.oppCode;
+    Building *building  = [self.sortedBuildingWithPhotos objectAtIndex:index];
+    NSNumber *buildingCode = building.opp_bldg_code;
     NSString *buildingCodeString = [NSString stringWithFormat:@"%@", buildingCode];
     
     

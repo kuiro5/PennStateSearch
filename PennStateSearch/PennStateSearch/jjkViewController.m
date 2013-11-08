@@ -1,8 +1,8 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 7
-// Date: October 17, 2013
+// Program: Assignment 9
+// Date: October 31, 2013
 //
 
 #import "jjkViewController.h"

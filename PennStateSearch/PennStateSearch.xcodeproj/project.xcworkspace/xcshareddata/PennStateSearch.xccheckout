@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3325D981-EFC0-45B6-B44D-E8B1B20851E5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PennStateSearch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>99C96F99-B54B-464F-BBE8-6B40946992B4</key>
+		<string>https://github.com/kuiro5/PennStateSearch.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PennStateSearch/PennStateSearch.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>99C96F99-B54B-464F-BBE8-6B40946992B4</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kuiro5/PennStateSearch.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>99C96F99-B54B-464F-BBE8-6B40946992B4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>99C96F99-B54B-464F-BBE8-6B40946992B4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PennStateSearch</string>
+		</dict>
+	</array>
+</dict>
+</plist>

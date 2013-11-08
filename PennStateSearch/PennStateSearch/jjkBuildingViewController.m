@@ -1,35 +1,51 @@
 //
 // Name:    Joshua Kuiros
 // Section: CMPSC 475
-// Program: Assignment 7
-// Date: October 17, 2013
+// Program: Assignment 9
+// Date: October 31, 2013
 //
 
 #import "jjkBuildingViewController.h"
 #import "jjkBuildingPhotoViewController.h"
 #import "jjkConstants.h"
 #import "jjkOptionsViewController.h"
-#define numberOfSections 1
+#import "jjkBuildingInfoViewController.h"
+#import "DataManager.h"
+#import "Building.h"
+#import "DataSource.h"
+#import "MyDataManager.h"
+#import "jjkAddBuildingViewController.h"
+#import "jjkMapViewController.h"
 
 @interface jjkBuildingViewController () <BuildingDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *buildingTableView;
-@property (nonatomic,assign) BOOL showingBuildingsPhotos;
+@property (strong, nonatomic) IBOutlet UISearchDisplayController *searchBar;
 
+@property (nonatomic,assign) BOOL showingBuildingsPhotos;
+@property (nonatomic,strong) jjkBuildingInfoViewController *detailViewController;
+@property (nonatomic,strong) DataSource *dataSource;
 @property(strong,nonatomic)NSString *pictureName;
+@property (nonatomic,strong) MyDataManager *myDataManager;
+@property (strong, nonatomic) NSIndexPath *mapPath;
 
 @end
  
 @implementation jjkBuildingViewController 
 
+
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    if (self) {
-        _model = [[Model alloc] init];
+
+    if (self)
+    {
+        _myDataManager = [[MyDataManager alloc] init];
+        _dataSource = [[DataSource alloc] initForEntity:@"Building" sortKeys:@[@"name"] predicate:nil sectionNameKeyPath:@"firstLetterOfName" dataManagerDelegate:_myDataManager];
+        
+        _dataSource.delegate = self;
+
     }
     return self;
 }
-
 
 
 
@@ -47,129 +63,226 @@
     [super viewDidLoad];
     
     self.pictureName = @"";
-
+    self.tableView.dataSource = self.dataSource;
+    self.dataSource.tableView = self.tableView;
+    
+    self.navigationItem.rightBarButtonItems = @[self.navigationItem.rightBarButtonItem, self.editButtonItem];
+    
+    // The following 3 lines of code support the Search Display Controller
+    // the Search Display Controller will use the same data source
+    self.searchDisplayController.searchResultsDataSource = self.dataSource;
+    
+    // set the scope buttons
+    self.searchDisplayController.searchBar.scopeButtonTitles = @[@"All", @"One Word", @"Two Words"];
+    
+    // hide search bar
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
     [self.model displayBuildings];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
     NSNumber *boolNumber = [preferences objectForKey:buildingsWithPhotos];
     self.showingBuildingsPhotos = [boolNumber boolValue];
-  
-    [self.buildingTableView reloadData];
-}
-
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if(self)
-    {
-        [[[self tabBarController] navigationItem] setTitle:@"PSU Buildlings"];
-        [self.buildingTableView deselectRowAtIndexPath:[self.buildingTableView indexPathForSelectedRow] animated:YES];
-        
-    }
-}
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-
--(NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
-{
-    return numberOfSections;
-}
-
-
--(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if(self.showingBuildingsPhotos)
-    {
-        return [self.model numberOfBuildingsWithPhotos];
-    }
-    else
-    {
-        return [self.model numberOfBuildings];
-    }
-}
-
--(UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-
-    UITableViewCell *cell = nil;
-    static NSString *CellIdentifier = @"BuildingCell";
     
-    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if(cell == nil)
-    {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        
-    }
     
     
     if(self.showingBuildingsPhotos)
     {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"photo != nil"];
+        [self.dataSource updateWithPredicate:predicate];
         
-            cell.textLabel.text = [self.model photoBuildingNameAtIndex:indexPath.row];
-            cell.detailTextLabel.text = [self.model photoBuildingOppCodeAtIndex:indexPath.row];
-            
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.userInteractionEnabled = YES;
-            
+    }
+    else if(!self.showingBuildingsPhotos)
+    {
+        [self.dataSource updateWithPredicate:nil]; 
+    }
+    
+    [self.tableView reloadData];
+}
+
+
+#pragma mark - Data Source Cell Configurer
+
+-(NSString*)cellIdentifierForObject:(id)object
+{
+    return @"BuildingCell";
+}
+
+-(void)configureCell:(UITableViewCell *)cell withObject:(id)object
+{
+    Building *building = object;
+   // CLLocationCoordinate2D *location;
+    
+    if(self.showingBuildingsPhotos)
+    {
+        cell.textLabel.text = building.name;
+        NSString *tempString = [NSString stringWithFormat:@"%@", building.year_constructed];
+        
+     
+        if(![tempString isEqualToString: @"0"])                     // display year_constructed if it exists
+        {
+            cell.detailTextLabel.text = tempString;
+        }
+        else
+        {
+            cell.detailTextLabel.text = @"";
+        }
+        
+       
         
     }
     else if(!self.showingBuildingsPhotos)
     {
         
-        self.pictureName = [self.model buildingPictureAtIndex:indexPath.row];
-        cell.textLabel.text = [self.model buildingNameAtIndex:indexPath.row];
-        cell.detailTextLabel.text = [self.model buildingOppCodeAtIndex:indexPath.row];
+        self.pictureName = building.photoName;
+        cell.textLabel.text = building.name;
         
-        if([self.pictureName length] == 0)
+        NSString *tempString = [NSString stringWithFormat:@"%@", building.year_constructed];
+        
+        if(![tempString isEqualToString: @"0"])                     // display year_constructed if it exists
         {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.userInteractionEnabled = NO;
+            cell.detailTextLabel.text = tempString;
         }
         else
         {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.userInteractionEnabled = YES;
-            
+            cell.detailTextLabel.text = @"";
         }
+
+        
+        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        //cell.userInteractionEnabled = YES;
+        
     }
-    return cell;
+    
+    if(building.latitude == nil && building.longitude == nil)
+    {
+        cell.accessoryType = nil;
+        cell.userInteractionEnabled = NO;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.userInteractionEnabled = YES;
+    }
 }
+
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+#pragma mark - editing
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+}
+
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
+    
+    [self.tableView reloadData];
+}
+
+
+
 
 - (NSIndexPath *)buildingRowSelected
 {
-    NSIndexPath *indexPath = [self.buildingTableView indexPathForSelectedRow];
+    
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    
     
     return indexPath;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+}
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    self.mapPath = indexPath;
+
+    [self performSegueWithIdentifier:@"MapSegue" sender:self];
+}
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-    if ([segue.identifier isEqualToString:@"BuildingSegue"])
+    
+    if ([segue.identifier isEqualToString:@"InfoSegue"])
     {
-        jjkBuildingPhotoViewController *buildingInfoViewController = segue.destinationViewController;
-        buildingInfoViewController.model = self.model;
-        buildingInfoViewController.delegate = self;
+        jjkBuildingInfoViewController *buildingInfoViewController = segue.destinationViewController;
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        __block Building *building = [self.dataSource objectAtIndexPath:indexPath];
+        
+        buildingInfoViewController.title = building.name;
+        buildingInfoViewController.buildingPhoto = [[UIImage alloc] initWithData:building.photo];
+        buildingInfoViewController.infoString = building.info;
+        
+            buildingInfoViewController.completionBlock = ^(id obj){
+            NSString *newInfo = obj;
+            building.info = newInfo;
+            [[DataManager sharedInstance] saveContext];
+        };
     }
     else if([segue.identifier isEqualToString:@"OptionsSegue"])
     {
         jjkOptionsViewController *optionsViewController = segue.destinationViewController;
         optionsViewController.CompletionBlock = ^{[self dismissViewControllerAnimated:YES completion:NULL];};
     }
-    
+    else if ([segue.identifier isEqualToString:@"AddBuildingSegue"])
+    {
+        jjkAddBuildingViewController *addBuildingViewController = segue.destinationViewController;
+        addBuildingViewController.completionBlock = ^(id obj) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+        if (obj) {
+            
+            
+            NSDictionary *dictionary = obj;
+            [self.myDataManager addBuilding:dictionary];
+        }
+    };
+}
+    else if ([segue.identifier isEqualToString:@"MapSegue"])
+    {
+     
+        
+        jjkMapViewController *mapViewController = segue.destinationViewController;
+        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        Building *building = [self.dataSource objectAtIndexPath:self.mapPath];
+      
+        
+          mapViewController.mapCenter = CLLocationCoordinate2DMake([building.latitude doubleValue], [building.longitude doubleValue]);
+        mapViewController.buildingName = building.name;
+        mapViewController.buildingPhoto = [[UIImage alloc] initWithData:building.photo];
+        // =[self.model buildlingCenterForIndex:indexPath.row];
+
+    }
 }
 
 @end
